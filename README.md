@@ -20,4 +20,4 @@ Matthew Kim
 
 
 ## License
-[MIT License](license)
+[MIT License](LICENSE)
