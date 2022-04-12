@@ -1,2 +1,19 @@
-# basic_cocktails
-This is the GitHub Repository of our COMS 4170 UI Group Project. This goal of the website is to teach users how to make basic cocktails!
+# Basic Cocktails
+
+## Description
+
+This is the repository for a website that teaches users how to make basic cocktails.
+
+It is being designed as part of a class project for COMS 4170 UI Design class
+at Columbia University taught by Prof. Lydia Chilton in Spring 2022.
+
+## Developer Info
+
+Amber Michaca
+Chris Berniel Cobashatse
+Erica Inyoung Choi
+Matthew Kim
+
+
+## License
+[MIT License](license)
