@@ -16,8 +16,12 @@ function create_link(cocktail) {
     let cardText = $('<p class="card-text"> </p>')
     $(cardText).text(title)
     $(cardBody).append(cardText)
+
+    quiz_id = (curCocktail['id'] * 2) - 1
+    console.log(quiz_id)
     
-    let content = $("<a href='/quiz/" + curCocktail['id'] + "'><img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'></a");
+    let content = $("<a href='/quiz/" + quiz_id + "'><img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'></a");
+    // let content = $("<img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'>");
     
     //NEW 
     $(cardContainer).append(cardBody)
