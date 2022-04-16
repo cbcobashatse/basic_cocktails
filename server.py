@@ -33,6 +33,23 @@ cocktails = {
     }
 }
 
+basic_tools = {
+    "1":{
+        "id": "1",
+        "title": "Jigger",
+        "image": "https://assets.wsimgs.com/wsimgs/rk/images/dp/wcm/202214/0546/img73o.jpg",
+        "description": "A jigger is a bartender's measuring cup. They are typically double sided with each end designed to fit a specified volumetric amount in ounces.",
+        "alt_text": ""
+    },
+    "2":{
+        "id": "2",
+        "title": "Pour Top",
+        "image": "https://ae01.alicdn.com/kf/HTB15W0cuNSYBuNjSsphq6zGvVXax/2016-Top-Sale-2Pcs-Stainless-Steel-Liquor-Spirit-Pourer-Flow-Wine-Bottle-Pour-Spout-Stopper-Barware.jpg",
+        "description": "Pour tops are designed to fit inside most standard liquor bottles. They are designed to have a constant flow rate of liquid through the spout as long as the liquor bottle is fully inverted",
+        "alt_text": ""
+    }
+}
+
 ####################################ROUTES####################################
 @app.route('/')
 def hello_world():
@@ -40,7 +57,7 @@ def hello_world():
 
 @app.route('/basics')
 def display_basics():
-   return render_template('basics.html') 
+   return render_template('basics.html', basic_tools = basic_tools) 
 
 @app.route('/learn')
 def display_learn():
