@@ -61,7 +61,14 @@ def display_basics():
 
 @app.route('/learn')
 def display_learn():
-    return render_template('learn.html')
+    return render_template('learn.html', cocktails = cocktails)
+
+@app.route('/learn/<id>')
+def learn_cocktail(id=None):
+    
+    global cocktails
+    cocktail = cocktails[id]
+    return render_template('learn_cocktail.html', cocktail = cocktail) 
 
 @app.route('/quiz')
 def display_quiz():
