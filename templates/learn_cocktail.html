@@ -1,0 +1,25 @@
+<!--takes 1 resturant and displays it. this is directly connected to the server.py -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div id = "container">
+    <br><br>
+
+    <div class = "row">
+        <div class = "col-md-4"> 
+            <div class = "title serif row">
+                {{cocktail.title}}
+            </div>
+            <br>
+            <div class = "row"> 
+                <img class = "image" src="{{cocktail.image}}">
+            </div>        
+
+        </div>
+     
+
+    </div>
+
+{% endblock %}

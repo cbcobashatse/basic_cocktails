@@ -5,8 +5,20 @@
 <!--load the log_sales.js-->
 <script type="text/javascript" src="{{ url_for('static', filename = 'learn.js') }}"></script>
 
-    <div >
-        Learn Page 
+<script>
+    let cocktails = {{cocktails|tojson}} 
+</script>
+
+    <div class = "learn-container">
+        <div class = "row"> 
+            <p>Hello Student! Click on any of the 
+            cocktails in our database that you would 
+            like to learn. Make sure you learn the recipe 
+            well. We will quiz you later!</p>
+        </div>
+        <div class = "row" id = "cocktail-list-div"> 
+        </div>
+
     </div>
 
 
