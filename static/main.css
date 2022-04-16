@@ -7,3 +7,8 @@
 .navbar{
     background-color: rgb(234, 221, 202);
 }
+
+.col-padding{
+    padding: 50px; 
+
+}

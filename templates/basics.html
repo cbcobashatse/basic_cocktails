@@ -2,13 +2,28 @@
 
 {% block content %}
 
-<!--load the log_sales.js-->
 <script type="text/javascript" src="{{ url_for('static', filename = 'basics.js') }}"></script>
 
+<script>
+    let basic_tools = {{basic_tools|tojson}} 
+</script>
 
 
 <div id = "container">
-    Basics Page 
+    <div class = "row instruction"> 
+        Hey Student! Please take some time to familiarize 
+        yourself with some of the basics behind cocktail 
+        making. You may skip this information, but we find 
+        that it helps students apply what they learn on 
+        here to real life situations better. You won't be 
+        quizzed on this!
+    </div>
+    <br><br><br>
+    <div class = "row" id = "basic-tools-div"> </div>
+    <br>
+
+    <button class = "skip-button"><a href = "/learn">Skip</a></button> 
+    
 </div>
 
 {% endblock %}
