@@ -29,3 +29,24 @@
     height: 30px;
     text-align: center;
 }
+
+.hint{
+    display: inline-block;
+}
+
+.score{
+    display: inline-block;
+}
+
+.error{
+    display: block;
+    color: red;
+}
+
+.correct{
+    color: green;
+}
+
+.incorrect{
+    color: red
+}
