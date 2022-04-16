@@ -149,8 +149,18 @@ def learn_cocktail(id=None):
 
 @app.route('/quiz')
 def display_quiz():
-    return render_template('quiz.html')
+    return render_template('quiz.html', cocktails = cocktails)
 
+@app.route('/quiz/<id>')
+def quiz_cocktail(id=None):
+    global quiz_questions
+    question = quiz_questions[id]
+    question_type = question["question_type"]
+    if question_type == "Drag and drop":
+        return render_template('drag_and_drop.html', question = question)
+
+    else:
+        return render_template('fill_in_the_blank.html', question = question)
 
 
 ############################STANDARD THINGS WE NEED##############################
