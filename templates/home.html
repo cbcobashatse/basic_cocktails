@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!--load the log_sales.js-->
+<script type="text/javascript" src="{{ url_for('static', filename = 'home.js') }}"></script>
+
+<!--This script tag reads in variables from the server so that we can access them in the js-->
+
+    <div class = "container">
+        <br><br>
+        <p> 
+            Hello! Will you be hosting an event for your 
+            friends soon? Are you studying to become a bartender? 
+            Or do you simply want to learn how to make cocktails? 
+            If you answered yes to any of those questions. You are 
+            in the right place! Welcome to the one stop spot for 
+            learning the recipes to classic cocktails!
+        </p>
+        <img src = "https://www.tastingtable.com/img/gallery/11-cocktails-to-try-if-you-like-drinking-gin/intro-1640186734.jpg" class = "home-img" alt = "Four cocktails served in wine glass with fresh fruit">
+
+
+    </div>
+
+
+{% endblock %}
