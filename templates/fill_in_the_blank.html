@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'fill_in_the_blank.js') }}"></script>
+
+<script>
+    let question={{question|tojson}}
+</script>
+    <div class = "row">
+        <div class = "col-md-6">
+            <div class = "row">
+                <div class = "row bold quiz_name serif">
+                    {{question.title}}
+                </div>
+                <div class = "row">
+                    <img src="{{question.image}}" width="80%">
+                </div>
+            </div>
+        </div>
+        <div class = "col-md-6">
+            <div class = "quiz_instructions row">
+                Fill in the blanks to complete the recipe. If the value is not an integer then include the 0 before the decimal (i.e. write 0.5 instead of .5).
+            </div>
+
+            </br>
+
+            <div class = "row">
+                Recipe:
+            </div>
+            <div class = "fill_in_questions">
+            </div>
+
+            </br></br>
+
+            <div class = "check_div">
+                <button class = "check_button"> Check </button>
+                <div class = "score">
+                </div>
+            </div>
+
+            </br>
+
+            <div class = "other_buttons">
+                <button class = "quiz_home_button">
+                    Go back to quiz home
+                </button>
+            </div>
+            </br>
+        </div>
+    </div>
+    
+
+{% endblock %}
