@@ -1,0 +1,37 @@
+<!--takes 1 quiz and displays the drag and drop question first. this is directly connected to the server.py -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div id = "container">
+    <div class="row bold quiz_name serif">
+        {{cocktail.title}}
+    </div>
+    <div class="row">
+        <div class="col-md-6 task">
+            CLICK ON THE CORRECT COCKTAIL IMAGE BELOW
+        </div>
+        <div class="col-md-6 task">
+            DRAG AND DROP THE CORRECT INGREDIENTS INTO THIS BOX
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "col-md-4"> 
+            <div class = "title serif row">
+                {{cocktail.title}}
+            </div>
+            <br>
+            <div class = "row"> 
+                <img class = "image" src="{{cocktail.image}}">
+            </div>        
+
+        </div>
+        <div class="col-md-8">
+            drag and drop
+        </div>
+     
+
+    </div>
+
+{% endblock %}

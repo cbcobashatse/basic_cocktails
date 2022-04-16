@@ -5,9 +5,17 @@
 <!--load the log_sales.js-->
 <script type="text/javascript" src="{{ url_for('static', filename = 'quiz.js') }}"></script>
 
+<script>
+    let cocktails = {{cocktails|tojson}} 
+</script>
 
-    <div>
-        Quiz page 
+    <div class = "learn-container">
+        <div class = "row"> 
+            <p>Hello Student! Click on the cocktail and format you would like to quiz yourself on!</p>
+        </div>
+        <div class = "row" id = "cocktail-list-div"> 
+        </div>
+
     </div>
 
 
