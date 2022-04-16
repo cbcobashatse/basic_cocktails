@@ -12,7 +12,7 @@ cocktails = {
         "title": "Tequila Sunrise",
         "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
         "description": "The tequila sunrise is a cocktail made of tequila, orange juice, and grenadine syrup. It's served unmixed in a tall glass. The modern drink originates from Sausalito, California, in the early 1970s after an earlier one created in the 1930s in Phoenix, Arizona.",
-        "ingredients": ["1.5 oz Tequila", "4 oz Orange Juice", ".25 oz Grenadine", "Cherry garnish"], 
+        "ingredients": ["1.5 oz Tequila", "4 oz Orange Juice", "0.25 oz Grenadine", "Cherry garnish"], 
         "alt_text": ""
     },
     "2":{
@@ -20,7 +20,7 @@ cocktails = {
         "title": "Cosmopolitan",
         "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
         "description": "A cosmopolitan, according to Punch Magazine, is an alcoholic cocktail served in a martini glass made with a combination of vodka, cranberry juice, triple sec, and lime. It first came on the scene around the emergence of the Gay Rights movement, before the cocktail renaissance, as they put it, and stole the show, becoming a quick classic.",
-        "ingredients": ["1.5 oz Vodka ", "0.5 oz Triple Sec", "0.5 oz Lime Juice", "1 oz Cranberry Juice", "0.5 oz Simple Syrup", "Lime Garnish"], 
+        "ingredients": ["1.5 oz Citron Vodka", "0.5 oz Triple Sec", "0.5 oz Lime Juice", "1 oz Cranberry Juice", "0.5 oz Simple Syrup", "Lime Garnish"], 
         "alt_text": ""
     },
     "3":{
@@ -48,6 +48,83 @@ basic_tools = {
         "description": "Pour tops are designed to fit inside most standard liquor bottles. They are designed to have a constant flow rate of liquid through the spout as long as the liquor bottle is fully inverted",
         "alt_text": ""
     }
+}
+
+quiz_questions = {
+    "1":{
+        "id": "1",
+        "question_type": "Drag and drop",
+        "title": "Tequila Sunrise",
+        "ingredients": ["Tequila", "Orange Juice", "Grenadine", "Cherry Garnish"],
+        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
+        "correct_image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "alt_text1": "Tequila Sunrise cocktail",
+        "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "alt_text2": "Sex on the Beach cocktail",
+        "max_score": "4",
+        "next_question": "2"
+    },
+
+    "2":{
+        "id": "2",
+        "question_type": "Fill in the blank",
+        "title": "Tequila Sunrise",
+        "visible_text": ["oz Tequila", "oz Orange Juice", "oz Grenadine", "Garnish"],
+        "answers": ["1.5", "4", "0.25", "Cherry"],
+        "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "alt_text": "Tequila Sunrise cocktail",
+        "max_score": "4",
+    },
+
+    "3":{
+        "id": "3",
+        "question_type": "Drag and drop",
+        "title": "Cosmopolitan",
+        "ingredients": ["Citron Vodka", "Triple Sec", "Lime Juice", "Cranberry Juice", "Simple Syrup", "Lime Garnish"],
+        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
+        "correct_image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
+        "alt_text1": "Cosmopolitan cocktail",
+        "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "alt_text2": "Sex on the Beach cocktail",
+        "max_score": "6",
+        "next_question": "4"
+    },
+
+    "4":{
+        "id": "4",
+        "question_type": "Fill in the blank",
+        "title": "Cosmopolitan",
+        "visible_text": ["oz Citron Vodka", "oz Triple Sec", "0.5 oz", "Cranberry Juice", "Simple Syrup", "Garnish"],
+        "answers": ["1.5", "0.5", "Lime Juice", "1", "0.5", "Lime"],
+        "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
+        "alt_text": "Cosmopolitan cocktail",
+        "max_score": "4",
+    },
+
+    "5":{
+        "id": "5",
+        "question_type": "Drag and drop",
+        "title": "Sex on the Beach",
+        "ingredients": ["Vodka", "Peach Schnapps", "Orange Juice", "Cranberry Juice"],
+        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
+        "correct_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "alt_text1": "Sex on the Beach cocktail",
+        "wrong_image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "alt_text2": "Tequila Sunrise cocktail",
+        "max_score": "4",
+        "next_question": "6"
+    },
+
+    "6":{
+        "id": "6",
+        "question_type": "Fill in the blank",
+        "title": "Sex on the Beach",
+        "visible_text": ["oz Vodka", "oz Peach Schnapps", "Cranberry Juice", "2 oz"],
+        "answers": ["1", "0.5", "2", "Orange Juice"],
+        "image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "alt_text": "Sex on the Beach cocktail",
+        "max_score": "4",
+    },
 }
 
 ####################################ROUTES####################################
