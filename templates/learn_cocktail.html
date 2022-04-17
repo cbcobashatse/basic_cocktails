@@ -3,23 +3,45 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
+<style>
+    .center{
+        
+        text-align: center;
+    }
+</style>
+<script type="text/javascript" src="{{ url_for('static', filename = 'learn_cocktail.js') }}"></script>
+<script>
+    let cocktail = {{cocktail|tojson}} 
+</script>
 <div id = "container">
     <br><br>
-
     <div class = "row">
-        <div class = "col-md-4"> 
-            <div class = "title serif row">
-                {{cocktail.title}}
-            </div>
+        <div class = "col-6"> 
+            <img class = "image" src="{{cocktail.image}}" width = "400">
+        </div>
+        <div class = "col-6"> 
             <br>
-            <div class = "row"> 
-                <img class = "image" src="{{cocktail.image}}">
-            </div>        
+            <div id = "front" class = "center"> 
+                {{cocktail.title}}
+            </div>    
+            <br>
+            <hr>
+            <div class = "center">
+                <div id = "back">
+                    
+                </div><br>
+                <button id="flip" type="button" value="Flip" onclick="flash()">
+                    Flip</button>
+            </div>
+
 
         </div>
-     
 
     </div>
 
+
+            
+
+
 {% endblock %}
+
