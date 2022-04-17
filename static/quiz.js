@@ -18,7 +18,7 @@ function create_link(cocktail) {
     $(cardBody).append(cardText)
 
     quiz_id = (curCocktail['id'] * 2) - 1
-    console.log(quiz_id)
+    // console.log(quiz_id)
     
     let content = $("<a href='/quiz/" + quiz_id + "'><img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'></a");
     // let content = $("<img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'>");
@@ -32,7 +32,7 @@ function create_link(cocktail) {
 }
 
 $(document).ready(function(){
-    console.log("learn page reached")
+    console.log("quiz page reached")
 	create_link(cocktails["1"])
 	create_link(cocktails["2"])
 	create_link(cocktails["3"])
