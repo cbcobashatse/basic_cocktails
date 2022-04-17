@@ -3,35 +3,40 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<!-- <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'drag_and_drop.js') }}"></script>
 
-<div id = "container">
+<script>
+    let question = {{question|tojson}} 
+</script>
+
     <div class="row bold quiz_name serif">
         {{question.title}}
     </div>
     <div class="row">
-        <div class="col-md-6 task">
-            CLICK ON THE CORRECT COCKTAIL IMAGE BELOW
-        </div>
-        <div class="col-md-6 task">
-            DRAG AND DROP THE CORRECT INGREDIENTS INTO THIS BOX
-        </div>
-    </div>
-    <div class = "row">
-        <div class = "col-md-4"> 
-            <div class = "title serif row">
-                {{question.title}}
+        <div class="col-md-6">
+            <div class="row task">
+                CLICK ON THE CORRECT COCKTAIL IMAGE BELOW
             </div>
-            <br>
-            <div class = "row"> 
-                <img class = "image" src="{{question.image}}">
-            </div>        
-
+            <div id="images_div" class="quiz_images">
+            </div>
+            <div id="results"></div>
+            <div class="row dd_check">
+                <div class = "check_div">
+                    <button class = "check_button"> Check </button>
+                    <div class = "score">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-8">
-            drag and drop
+        <div class="col-md-6">
+            <div class="row task">
+                DRAG AND DROP THE CORRECT INGREDIENTS INTO THIS BOX
+            </div>
+            <div id="user_answers" class="row drop_area"></div>
+            <div id="choices" class="row choices"></div>
         </div>
-     
-
     </div>
+     
 
 {% endblock %}

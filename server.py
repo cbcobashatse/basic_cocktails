@@ -241,6 +241,25 @@ def quiz_cocktail(id=None):
     else:
         return render_template('fill_in_the_blank.html', question = question)
 
+#-----------AJAX code-------------#
+
+@app.route('/delete_choice', methods=['GET', 'UPDATE'])
+def delete_choice():
+    print("got here")
+    global quiz_questions
+
+    # get data from JSON
+    json_data = request.get_json()
+    choice = json_data["choice"]
+    question = json_data["question"]
+
+    # delete the choice from the global quiz_questions variable
+    current_id = question["id"]
+    quiz_questions[current_id]["choices"].remove(choice)
+
+    question = quiz_questions[current_id]
+    return jsonify(question = question)
+
 
 ############################STANDARD THINGS WE NEED##############################
 if __name__ == '__main__':
