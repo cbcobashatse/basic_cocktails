@@ -151,5 +151,11 @@ $(document).ready(function(){
         $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
         console.log(user_answers)
     })
+    $(".next_button").click(function(){
+        let id = question["id"]
+        let next_id = parseInt(id) + 1
+        document.location.href = "/quiz/" + next_id
+        console.log("next")
+    })
 
 })
