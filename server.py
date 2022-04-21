@@ -62,7 +62,7 @@ quiz_questions = {
         "alt_text1": "Tequila Sunrise cocktail",
         "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
         "alt_text2": "Sex on the Beach cocktail",
-        "max_score": "4",
+        "max_score": "5",
         "next_question": "2"
     },
 
@@ -206,6 +206,12 @@ quiz_questions = {
     },
 }
 
+user_answers = {
+    "image" : "Not selected yet",
+    "drag_and_drop": [],
+    "fill_in_blank": []
+}
+
 ####################################ROUTES####################################
 @app.route('/')
 def hello_world():
@@ -236,29 +242,68 @@ def quiz_cocktail(id=None):
     question = quiz_questions[id]
     question_type = question["question_type"]
     if question_type == "Drag and drop":
-        return render_template('drag_and_drop.html', question = question)
+        return render_template('drag_and_drop.html', question = question, user_answers = user_answers)
 
     else:
-        return render_template('fill_in_the_blank.html', question = question)
+        return render_template('fill_in_the_blank.html', question = question, user_answers = user_answers)
 
 #-----------AJAX code-------------#
 
-@app.route('/delete_choice', methods=['GET', 'UPDATE'])
-def delete_choice():
+@app.route('/update_answers', methods = ['GET', 'UPDATE'])
+def update_answers():
     print("got here")
-    global quiz_questions
+    global user_answers
 
     # get data from JSON
     json_data = request.get_json()
-    choice = json_data["choice"]
+    answer = json_data["answer"]
+
+    # update the answer
+    user_answers['image'] = answer
+
+    return jsonify(user_answers = user_answers)
+
+@app.route('/from_choice_to_answer', methods=['GET', 'UPDATE'])
+def from_choice_to_answer():
+    # print("got here")
+    global quiz_questions
+    global user_answers
+
+    # get data from JSON
+    json_data = request.get_json()
+    answer = json_data["answer"]
     question = json_data["question"]
 
     # delete the choice from the global quiz_questions variable
     current_id = question["id"]
-    quiz_questions[current_id]["choices"].remove(choice)
+    quiz_questions[current_id]["choices"].remove(answer)
+
+    # add the choice/answer to the user_answers variable
+    user_answers["drag_and_drop"].append(answer)
 
     question = quiz_questions[current_id]
-    return jsonify(question = question)
+    return jsonify(question = question, user_answers = user_answers)
+
+@app.route('/from_answer_to_choice', methods=['GET', 'UPDATE'])
+def from_answer_to_choice():
+    # print("got here")
+    global quiz_questions
+    global user_answers
+
+    # get data from JSON
+    json_data = request.get_json()
+    answer = json_data["answer"]
+    question = json_data["question"]
+
+    # delete the choice from the global quiz_questions variable
+    current_id = question["id"]
+    quiz_questions[current_id]["choices"].append(answer)
+
+    # add the choice/answer to the user_answers variable
+    user_answers["drag_and_drop"].remove(answer)
+
+    question = quiz_questions[current_id]
+    return jsonify(question = question, user_answers = user_answers)
 
 
 ############################STANDARD THINGS WE NEED##############################
