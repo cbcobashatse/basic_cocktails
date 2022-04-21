@@ -1,4 +1,4 @@
-let user_answers = {"image": "", "drag_and_drop": []}
+let score = 0
 
 function create_images(question) {
     // let question_id = question['id']
@@ -30,6 +30,7 @@ function create_images(question) {
 }
 
 function possible_choices(question) {
+    $("#choices").empty()
     choices = question["choices"]
     $.each(choices, function(index, value){
         let col = $('<div class="col-md-4"></div>')
@@ -44,35 +45,35 @@ function possible_choices(question) {
 }
 
 function display_answers(user_answers){
-    console.log("called")
     $("#user_answers").empty()
     answers = user_answers["drag_and_drop"]
     $.each(answers, function(index, value){
-        let col = $('<div class="col-md-4"></div>')
-        let answer = $('<div class="choice">')
-        $(answer).text(value)
-        $(answer).attr('id', value)
-        $(answer).draggable()
-
-        $(col).append(answer)
-        $("#user_answers").append(col)
+        if (value != "Not selected yet"){
+            let col = $('<div class="col-md-4"></div>')
+            let answer = $('<div class="choice">')
+            $(answer).text(value)
+            $(answer).attr('id', value)
+            $(answer).draggable()
+    
+            $(col).append(answer)
+            $("#user_answers").append(col)
+        }
     });
 }
 
-function delete_choice(choice, question) {
-    let data_to_delete = {"choice": choice, "question": question}
-    // console.log(choice)
-    // console.log(question)
-    // console.log("works")
+function from_choice_to_answer(answer, question) {
+    let data_to_change = {"answer": answer, "question": question}
     $.ajax({
         type: "UPDATE",
-        url: "delete_choice",
+        url: "/from_choice_to_answer",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data_to_delete),
+        data: JSON.stringify(data_to_change),
         success:function(result){
-            let question = result["question"]
+            question = result["question"]
+            user_answers = result['user_answers']
             possible_choices(question)
+            display_answers(user_answers)
         },
         error: function(request, status, error){
             console.log("Error")
@@ -83,26 +84,66 @@ function delete_choice(choice, question) {
     });
 }
 
-// function add_choice(choice, question) {
-//     let data_to_delete = {"choice": choice, "question": question}
-//     $.ajax({
-//         type: "POST",
-//         url: "add_choice",
-//         dataType: "json",
-//         contentType: "application/json; charset=utf-8",
-//         data: JSON.stringify(data_to_delete),
-//         success:function(result){
-//             let question = result["question"]
-//             possible_choices(question)
-//         },
-//         error: function(request, status, error){
-//             console.log("Error")
-//             console.log(request)
-//             console.log(status)
-//             console.log(error)
-//         }
-//     });
-// }
+function from_answer_to_choice(answer, question) {
+    let data_to_change = {"answer": answer, "question": question}
+    $.ajax({
+        type: "UPDATE",
+        url: "/from_answer_to_choice",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data_to_change),
+        success:function(result){
+            question = result["question"]
+            user_answers = result['user_answers']
+            possible_choices(question)
+            display_answers(user_answers)
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
+function update_answers(answer) {
+    let data_to_change = {"answer": answer}
+    $.ajax({
+        type: "UPDATE",
+        url: "/update_answers",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data_to_change),
+        success:function(result){
+            // let question = result["question"]
+            user_answers = result['user_answers']
+            possible_choices(question)
+            display_answers(user_answers)
+            // console.log(user_answers["image"])
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
+function update_score(user_answer, question, option){
+    correct_answers = question["ingredients"]
+    console.log(correct_answers)
+    console.log(user_answer)
+    if (correct_answers.includes(user_answer)){
+        if (option == "add"){
+            score += 1
+        }
+        else{
+            score -= 1
+        }
+    }
+}
 
 $(document).ready(function(){
     console.log("drag and drop reached")
@@ -112,48 +153,74 @@ $(document).ready(function(){
     $('#correct').click(function(){
         $(this).addClass("image_selected")
         $('#wrong').removeClass("image_selected")
-        user_answers["image"] = "correct"
+        update_answers("correct")
+        score += 1
     })
     $('#wrong').click(function(){
         $(this).addClass("image_selected")
         $('#correct').removeClass("image_selected")
-        user_answers["image"] = "wrong"
+        update_answers("wrong")
+        if (score > 0){
+            score -= 1
+        }
     })
 
     $("#user_answers").droppable({
         drop: function( event, ui ) {
             event.preventDefault();
-            // ui.draggable()
             let dragged_item = $(ui.draggable).attr("id")
+            // console.log(user_answers)
             // update_user_data(dragged_item)
-            // delete_choice(dragged_item, question)
-
+            from_choice_to_answer(dragged_item, question)
+            update_score(dragged_item, question, "add")
             // if dynamic updates fail, this works
-            user_answers["drag_and_drop"].push(dragged_item)
-            display_answers(user_answers)
-            $(ui.draggable).remove()
+            // user_answers["drag_and_drop"].push(dragged_item)
+            // display_answers(user_answers)
+            // $(ui.draggable).remove()
+        }
+    })
+
+    $("#choices").droppable({
+        drop: function( event, ui ) {
+            event.preventDefault();
+            let dragged_item = $(ui.draggable).attr("id")
+            from_answer_to_choice(dragged_item, question)
+            update_score(dragged_item, question, "remove")
         }
     })
 
     $(".check_button").click(function(){
-        let score = 0
         let image_feedback = ""
-        if (user_answers["image"] == 'correct'){
-            score += 1
+        if (user_answers["image"] == "Not selected yet"){
             $("#results").empty()
-            image_feedback = $("<div class='correct'>Correct image!</div>")
+            image_feedback = $("<div class='incorrect'>Please select image!</div>")
+            $("#results").append(image_feedback)
+        }
+        else if(user_answers["drag_and_drop"].length == 0){
+            $("#results").empty()
+            $("#error_div").empty()
+            dd_feedback = $("<div class='incorrect'>Please drag at least 1 item!</div>")
+            $("#error_div").append(dd_feedback)
         }
         else{
-            $("#results").empty()
-            image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
+            $("#error_div").empty()
+            if (user_answers["image"] == 'correct'){
+                // score += 1
+                $("#results").empty()
+                image_feedback = $("<div class='correct'>Correct image!</div>")
+            }
+            else{
+                $("#results").empty()
+                image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
+            }
+            $("#results").append(image_feedback)
+            $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
+            console.log(user_answers)
         }
-        $("#results").append(image_feedback)
-        $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
-        console.log(user_answers)
     })
     $(".next_button").click(function(){
-        let id = question["id"]
-        let next_id = parseInt(id) + 1
+        // let id = question["id"]
+        let next_id = question["next_question"]
         document.location.href = "/quiz/" + next_id
         console.log("next")
     })

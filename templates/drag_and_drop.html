@@ -8,6 +8,7 @@
 
 <script>
     let question = {{question|tojson}} 
+    let user_answers = {{user_answers|tojson}}
 </script>
 
     <div class="row bold serif">
@@ -52,6 +53,7 @@
             <!-- <div class="row task">
             </div> -->
             <div id="user_answers" class="row drop_area"></div>
+            <div id="error_div" class="row"></div>
             <div id="choices" class="row choices"></div>
         </div>
     </div>
