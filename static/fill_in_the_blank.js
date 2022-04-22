@@ -37,6 +37,27 @@ function make_quiz(){
     })
 }
 
+function make_other_quiz_buttons(){
+    let count = 0
+    let row = $("<div class='row'></div>")
+    $.each(cocktails, function(index, value){
+        let name = cocktails[index]["title"]
+        if(name != question["title"]){
+            if(count %2 == 0 && count > 0){
+                $(".other_buttons").append(row)
+                row = $("<div class='row'></div>")
+            }
+            let button = $("<div class='col-md-6'><button>" + "Go to " + name + " quiz" + "</button></div>")
+            row.append(button)
+            $(button).click(function(){
+                let id = 2*(parseInt(cocktails[index]["id"]))
+                document.location.href = "/quiz/" + id
+            })
+        }
+    })
+    $(".other_buttons").append(row)
+}
+
 function check_answers(){
     $(".error").empty()
     $(".correct").empty()
@@ -44,18 +65,31 @@ function check_answers(){
     let score = 0
     let error = 0
     $(".fill_in_answer").each(function(){
+        let id = $(this).attr("id")
         if($(this).val()==""){
-            error=1
+            error = 1
             let error_msg = $("<div class='col-md-12 error'>Please enter an answer</div>")
             $(this).parent().append(error_msg)
         }
+
+        else if(!($.isNumeric($(this).val())) && question["lines"][id]["answer_type"]=="numeric"){
+            error = 1
+            let error_msg = $("<div class='col-md-12 error'>Please enter a numerical value</div>")
+            $(this).parent().append(error_msg)
+        }
+        else if($.isNumeric($(this).val()) && question["lines"][id]["answer_type"]=="text"){
+            error = 1
+            let error_msg = $("<div class='col-md-12 error'>Please enter a non-numerical value</div>")
+            $(this).parent().append(error_msg)
+        }
+
     })
-    if(error!=1){
+    if(error != 1){
         $(".fill_in_answer").each(function(){
             let val = $(this).val().toLowerCase()
-            let id=$(this).attr("id")
-            let answer=question["lines"][id]["answer"]
-            if(val==answer.toLowerCase()){
+            let id = $(this).attr("id")
+            let answer = question["lines"][id]["answer"]
+            if(val == answer.toLowerCase()){
                 score = score + 1
                 let feedback = $("<div class='correct'>Correct</div>")
                 $(this).parent().append(feedback)
@@ -74,8 +108,14 @@ function check_answers(){
 
 $(document).ready(function(){
     make_quiz()
+    make_other_quiz_buttons()
 
     $(".quiz_home_button").click(function(){
         document.location.href = "/quiz"
+    })
+
+    $(".back_button").click(function(){
+        let id = parseInt(question["id"]) - 1
+        document.location.href = "/quiz/" + id
     })
 })
