@@ -6,6 +6,7 @@
 
 <script>
     let question={{question|tojson}}
+    let cocktails={{cocktails|tojson}}
 </script>
     <div class = "row">
         <div class = "col-md-6">
@@ -13,6 +14,7 @@
                 <div class = "row bold quiz_name serif">
                     {{question.title}}
                 </div>
+                <br><br>
                 <div class = "row">
                     <img src="{{question.image}}" width="80%">
                 </div>
@@ -42,9 +44,19 @@
             </br>
 
             <div class = "other_buttons">
-                <button class = "quiz_home_button">
-                    Go back to quiz home
-                </button>
+                <div class = "row">
+                    <div class = "col-md-6">
+                        <button class = "back_button">
+                            Back
+                        </button>
+                    </div>
+                    <div class = "col-md-6">
+                        <button class = "quiz_home_button">
+                            Go back to quiz home
+                        </button>
+                    </div>
+                </div>
+                <br>
             </div>
             </br>
         </div>
