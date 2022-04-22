@@ -13,7 +13,7 @@ cocktails = {
         "title": "Tequila Sunrise",
         "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
         "description": "The tequila sunrise is a cocktail made of tequila, orange juice, and grenadine syrup. It's served unmixed in a tall glass. The modern drink originates from Sausalito, California, in the early 1970s after an earlier one created in the 1930s in Phoenix, Arizona.",
-        "ingredients": ["1.5 oz Tequila", "4 oz Orange Juice", "0.25 oz Grenadine", "Cherry garnish"], 
+        "ingredients": ["1.5 oz Tequila", "4 oz Orange Juice", "0.25 oz Grenadine", "Cherry Garnish"], 
         "alt_text": ""
     },
     "2":{
@@ -74,24 +74,28 @@ quiz_questions = {
             "1": {
                 "blank_alignment": "before",
                 "visible_text": "oz Tequila",
-                "answer": "1.5"
+                "answer": "1.5",
+                "answer_type": "numeric"
             },
             "2": {
                 "blank_alignment": "before",
                 "visible_text": "oz Orange Juice",
-                "answer": "4"
+                "answer": "4",
+                "answer_type": "numeric"
             },
 
             "3": {
                 "blank_alignment": "before",
                 "visible_text": "oz Grenadine",
-                "answer": "0.25"
+                "answer": "0.25",
+                "answer_type": "numeric"
             },
 
             "4": {
                 "blank_alignment": "before",
                 "visible_text": "Garnish",
-                "answer": "Cherry"
+                "answer": "Cherry",
+                "answer_type": "text"
             }
         },
         "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
@@ -121,36 +125,42 @@ quiz_questions = {
             "1": {
                 "blank_alignment": "before",
                 "visible_text": "oz Citron Vodka",
-                "answer": "1.5"
+                "answer": "1.5",
+                "answer_type": "numeric"
             },
             "2": {
                 "blank_alignment": "before",
                 "visible_text": "oz Triple Sec",
-                "answer": "0.5"
+                "answer": "0.5",
+                "answer_type": "numeric"
             },
 
             "3": {
                 "blank_alignment": "after",
                 "visible_text": "0.5 oz",
-                "answer": "Lime Juice"
+                "answer": "Lime Juice",
+                "answer_type": "text"
             },
 
             "4": {
                 "blank_alignment": "before",
                 "visible_text": "oz Cranberry Juice",
-                "answer": "1"
+                "answer": "1",
+                "answer_type": "numeric"
             },
 
             "5": {
                 "blank_alignment": "before",
                 "visible_text": "oz Simple Syrup",
-                "answer": "0.5"
+                "answer": "0.5",
+                "answer_type": "numeric"
             },
 
             "6": {
                 "blank_alignment": "before",
                 "visible_text": "Garnish",
-                "answer": "Lime"
+                "answer": "Lime",
+                "answer_type": "text"
             }
         },
         "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
@@ -180,24 +190,28 @@ quiz_questions = {
             "1": {
                 "blank_alignment": "before",
                 "visible_text": "oz Vodka",
-                "answer": "1"
+                "answer": "1",
+                "answer_type": "numeric"
             },
             "2": {
                 "blank_alignment": "before",
                 "visible_text": "oz Peach Schnapps",
-                "answer": "0.5"
+                "answer": "0.5",
+                "answer_type": "numeric"
             },
 
             "3": {
                 "blank_alignment": "before",
-                "visible_text": "Cranberry Juice",
-                "answer": "2"
+                "visible_text": "oz Cranberry Juice",
+                "answer": "2",
+                "answer_type": "numeric"
             },
 
             "4": {
                 "blank_alignment": "after",
                 "visible_text": "2 oz",
-                "answer": "Orange Juice"
+                "answer": "Orange Juice",
+                "answer_type": "text"
             }
         },
         "image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
@@ -238,6 +252,7 @@ def display_quiz():
 
 @app.route('/quiz/<id>')
 def quiz_cocktail(id=None):
+    global cocktails
     global quiz_questions
     question = quiz_questions[id]
     question_type = question["question_type"]
@@ -245,7 +260,7 @@ def quiz_cocktail(id=None):
         return render_template('drag_and_drop.html', question = question, user_answers = user_answers)
 
     else:
-        return render_template('fill_in_the_blank.html', question = question, user_answers = user_answers)
+        return render_template('fill_in_the_blank.html', question = question, user_answers = user_answers, cocktails = cocktails)
 
 #-----------AJAX code-------------#
 
