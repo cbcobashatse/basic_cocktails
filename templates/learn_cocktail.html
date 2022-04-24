@@ -5,8 +5,15 @@
 {% block content %}
 <style>
     .center{
-        
+        padding: 70px 0;
+        font-size: 50px;
         text-align: center;
+    }
+    .centerimage{
+        text-align:center;
+    }
+    .flipbutton{
+        text-align:center;
     }
 </style>
 <script type="text/javascript" src="{{ url_for('static', filename = 'learn_cocktail.js') }}"></script>
@@ -16,17 +23,17 @@
 <div id = "container">
     <br><br>
     <div class = "row">
-        <div class = "col-6"> 
-            <img class = "image" src="{{cocktail.image}}" width = "400">
+        <div class = "col-6 center"> 
+            {{cocktail.title}}
         </div>
         <div class = "col-6"> 
             <br>
-            <div id = "front" class = "center"> 
-                {{cocktail.title}}
+            <div id = "front" class = "centerimage"> 
+                
             </div>    
             <br>
             <hr>
-            <div class = "center">
+            <div class = "flipbutton">
                 <div id = "back">
                     
                 </div><br>
@@ -45,3 +52,4 @@
 
 {% endblock %}
 
+pul
