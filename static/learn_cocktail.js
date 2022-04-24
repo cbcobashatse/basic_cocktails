@@ -3,7 +3,8 @@ function create_card(cocktail){
     let curCocktail = cocktail
     let title = curCocktail["title"]
     let ingredients = curCocktail['ingredients']
-    front.innerHTML = title;
+    let image = curCocktail["image"]
+    front.innerHTML = "<img src='"+image+"' width= '300'>";
     back.innerHTML = ingredients;
     back.style.visibility = "hidden";
 
