@@ -3,7 +3,8 @@ let score = 0
 function create_images(question) {
     // let question_id = question['id']
     // let cocktail_id = (parseInt(question_id) + 1) / 2
-    let altText = "alt_text"
+    let altText1 = question["alt_text1"]
+    let altText2 = question["alt_text2"]
 
     let random_num = Math.floor((Math.random() * 2) + 1);
     
@@ -13,8 +14,8 @@ function create_images(question) {
     correct_image = question["correct_image"]
     wrong_image = question["wrong_image"]
 
-    correct = "<img id='correct' class='dd_image' src='"+correct_image+"'"+" alt='"+altText+"'>"
-    wrong = "<img id='wrong' class='dd_image' src='"+wrong_image+"'"+" alt='"+altText + "'>"
+    correct = "<img id='correct' class='dd_image' src='"+correct_image+"'"+" alt='"+altText1+"'>"
+    wrong = "<img id='wrong' class='dd_image' src='"+wrong_image+"'"+" alt='"+altText2 + "'>"
 
     if (random_num == 1){
         $(col_1).append(correct)
@@ -146,23 +147,12 @@ function update_score(user_answer, question, option){
 }
 
 $(document).ready(function(){
-    console.log("drag and drop reached")
-    create_images(question)
     possible_choices(question)
 
-    $('#correct').click(function(){
-        $(this).addClass("image_selected")
-        $('#wrong').removeClass("image_selected")
-        update_answers("correct")
-        score += 1
-    })
-    $('#wrong').click(function(){
-        $(this).addClass("image_selected")
-        $('#correct').removeClass("image_selected")
-        update_answers("wrong")
-        if (score > 0){
-            score -= 1
-        }
+    $('.next_button').click(function(){
+        $(".next_feedback").empty()
+        next_feedback = $("<div class='incorrect'>Please answer the question!</div>")
+        $('.next_feedback').append(next_feedback)
     })
 
     $("#user_answers").droppable({
@@ -191,38 +181,23 @@ $(document).ready(function(){
 
     $(".check_button").click(function(){
         let image_feedback = ""
-        if (user_answers["image"] == "Not selected yet"){
-            $("#results").empty()
-            image_feedback = $("<div class='incorrect'>Please select image!</div>")
-            $("#results").append(image_feedback)
-        }
-        else if(user_answers["drag_and_drop"].length == 0){
-            $("#results").empty()
+        if(user_answers["drag_and_drop"].length == 0){
             $("#error_div").empty()
             dd_feedback = $("<div class='incorrect'>Please drag at least 1 item!</div>")
             $("#error_div").append(dd_feedback)
         }
         else{
             $("#error_div").empty()
-            if (user_answers["image"] == 'correct'){
-                // score += 1
-                $("#results").empty()
-                image_feedback = $("<div class='correct'>Correct image!</div>")
-            }
-            else{
-                $("#results").empty()
-                image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
-            }
-            $("#results").append(image_feedback)
             $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
             console.log(user_answers)
         }
-    })
-    $(".next_button").click(function(){
-        // let id = question["id"]
-        let next_id = question["next_question"]
-        document.location.href = "/quiz/" + next_id
-        console.log("next")
+
+        $(".next_button").click(function(){
+            // let id = question["id"]
+            let next_id = question["next_question"]
+            document.location.href = "/quiz/" + next_id
+            console.log("next")
+        })
     })
 
 })

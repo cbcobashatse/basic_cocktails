@@ -47,10 +47,13 @@
 .dd_image{
     margin-top: 20px;
     max-height: 250px;
+    margin-left: 150px;
+    margin-right: 50px;
 }
 
 .quiz_images{
     display: flex;
+    /* margin: auto; */
 }
 
 .image_selected{

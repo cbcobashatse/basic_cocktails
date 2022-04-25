@@ -54,20 +54,30 @@ basic_tools = {
 quiz_questions = {
     "1":{
         "id": "1",
-        "question_type": "Drag and drop",
+        "question_type": "Choose the correct image",
         "title": "Tequila Sunrise",
-        "ingredients": ["Tequila", "Orange Juice", "Grenadine", "Cherry Garnish"],
-        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "correct_image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
         "alt_text1": "Tequila Sunrise cocktail",
         "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
         "alt_text2": "Sex on the Beach cocktail",
-        "max_score": "5",
+        "max_score": "1",
         "next_question": "2"
     },
 
     "2":{
         "id": "2",
+        "question_type": "Drag and drop",
+        "title": "Tequila Sunrise",
+        "ingredients": ["Tequila", "Orange Juice", "Grenadine", "Cherry Garnish"],
+        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
+        "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "alt_text": "Tequila Sunrise cocktail",
+        "max_score": "5",
+        "next_question": "3"
+    },
+
+    "3":{
+        "id": "3",
         "question_type": "Fill in the blank",
         "title": "Tequila Sunrise",
         "lines": {
@@ -103,22 +113,32 @@ quiz_questions = {
         "max_score": "4",
     },
 
-    "3":{
-        "id": "3",
-        "question_type": "Drag and drop",
+    "4":{
+        "id": "4",
+        "question_type": "Choose the correct image",
         "title": "Cosmopolitan",
-        "ingredients": ["Citron Vodka", "Triple Sec", "Lime Juice", "Cranberry Juice", "Simple Syrup", "Lime Garnish"],
-        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "correct_image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
         "alt_text1": "Cosmopolitan cocktail",
         "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
         "alt_text2": "Sex on the Beach cocktail",
-        "max_score": "6",
-        "next_question": "4"
+        "max_score": "1",
+        "next_question": "5"
     },
 
-    "4":{
-        "id": "4",
+    "5":{
+        "id": "5",
+        "question_type": "Drag and drop",
+        "title": "Cosmopolitan",
+        "ingredients": ["Citron Vodka", "Triple Sec", "Lime Juice", "Cranberry Juice", "Simple Syrup", "Lime Garnish"],
+        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
+        "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
+        "alt_text": "Cosmopolitan cocktail",
+        "max_score": "6",
+        "next_question": "6"
+    },
+
+    "6":{
+        "id": "6",
         "question_type": "Fill in the blank",
         "title": "Cosmopolitan",
         "lines": {
@@ -168,22 +188,32 @@ quiz_questions = {
         "max_score": "6",
     },
 
-    "5":{
-        "id": "5",
-        "question_type": "Drag and drop",
+    "7":{
+        "id": "7",
+        "question_type": "Choose the correct image",
         "title": "Sex on the Beach",
-        "ingredients": ["Vodka", "Peach Schnapps", "Orange Juice", "Cranberry Juice"],
-        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "correct_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
         "alt_text1": "Sex on the Beach cocktail",
         "wrong_image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
         "alt_text2": "Tequila Sunrise cocktail",
+        "max_score": "1",
+        "next_question": "5"
+    },    
+
+    "8":{
+        "id": "8",
+        "question_type": "Drag and drop",
+        "title": "Sex on the Beach",
+        "ingredients": ["Vodka", "Peach Schnapps", "Orange Juice", "Cranberry Juice"],
+        "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
+        "correct": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "alt_text": "Sex on the Beach cocktail",
         "max_score": "4",
-        "next_question": "6"
+        "next_question": "9"
     },
 
-    "6":{
-        "id": "6",
+    "9":{
+        "id": "9",
         "question_type": "Fill in the blank",
         "title": "Sex on the Beach",
         "lines": {
@@ -256,7 +286,10 @@ def quiz_cocktail(id=None):
     global quiz_questions
     question = quiz_questions[id]
     question_type = question["question_type"]
-    if question_type == "Drag and drop":
+    if question_type == "Choose the correct image":
+        return render_template('correct_image.html', question = question, user_answers = user_answers)
+
+    elif question_type == "Drag and drop":
         return render_template('drag_and_drop.html', question = question, user_answers = user_answers)
 
     else:

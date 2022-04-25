@@ -50,7 +50,8 @@ function make_other_quiz_buttons(){
             let button = $("<div class='col-md-6'><button>" + "Go to " + name + " quiz" + "</button></div>")
             row.append(button)
             $(button).click(function(){
-                let id = 2*(parseInt(cocktails[index]["id"]))
+                // changed the formula to account for the change in the data structure
+                let id = 3*(parseInt(cocktails[index]["id"])) - 2
                 document.location.href = "/quiz/" + id
             })
         }
