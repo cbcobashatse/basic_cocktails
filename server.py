@@ -269,6 +269,12 @@ def display_basics():
 def display_learn():
     return render_template('learn.html', cocktails = cocktails)
 
+@app.route('/learn/<id>/description')
+def display_description(id=None):
+    global cocktails
+    cocktail = cocktails[id]
+    return render_template('description.html', cocktail = cocktail)
+
 @app.route('/learn/<id>')
 def learn_cocktail(id=None):
     

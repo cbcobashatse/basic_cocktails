@@ -1,0 +1,34 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'description.js') }}"></script>
+
+<script>
+    let cocktail = {{cocktail|tojson}} 
+    let id = cocktail['id']
+</script>
+
+<div>
+
+    <div class = "row">
+    {{cocktail.title}}
+    </div>
+    <br> 
+    <div class = row> 
+        <div class = "col-md-6"> 
+            <img class = "image" src="{{cocktail.image}}">
+        </div>
+        <div class = "col-md-6"> 
+            {{cocktail.description}}
+            <br><br>
+            <button id = "learn-skip-button"><a href = "/learn/{{cocktail.id}}">Skip to Flashcard!</a></button> 
+        </div>
+    </div>
+   
+</div>
+
+
+{% endblock %}

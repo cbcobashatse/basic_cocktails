@@ -15,7 +15,7 @@ function create_link(cocktail) {
     $(cardText).text(title)
     $(cardBody).append(cardText)
     
-    let content = $("<a href='/learn/" + curCocktail['id'] + "'><img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'></a");
+    let content = $("<a href='/learn/" + curCocktail['id'] + "/description'><img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'></a");
     
     //NEW 
     $(cardContainer).append(content)
