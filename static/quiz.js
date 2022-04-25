@@ -17,7 +17,7 @@ function create_link(cocktail) {
     $(cardText).text(title)
     $(cardBody).append(cardText)
 
-    quiz_id = (curCocktail['id'] * 2) - 1
+    quiz_id = (curCocktail['id'] * 3) - 2
     // console.log(quiz_id)
     
     let content = $("<a href='/quiz/" + quiz_id + "'><img class = 'card-img-top' src='"+image+"'"+" alt='"+altText+"'" + " width= '100%'></a");
