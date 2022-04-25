@@ -97,3 +97,10 @@
 .dd_check{
     margin-top: 40px;
 }
+.image{
+    width:100%; 
+}
+
+#start-button{
+    margin:auto; 
+}
