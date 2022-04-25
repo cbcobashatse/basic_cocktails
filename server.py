@@ -253,7 +253,8 @@ quiz_questions = {
 user_answers = {
     "image" : "Not selected yet",
     "drag_and_drop": [],
-    "fill_in_blank": []
+    "fill_in_blank": [],
+    "score": "0"
 }
 
 ####################################ROUTES####################################
@@ -315,6 +316,14 @@ def update_answers():
     # update the answer
     user_answers['image'] = answer
 
+    if answer == "correct":
+        if user_answers["score"] != "1":
+            user_answers["score"] = str(int(user_answers["score"]) + 1)
+    else:
+        if user_answers["score"] != "0":
+            user_answers["score"] = str(int(user_answers["score"]) - 1)
+
+
     return jsonify(user_answers = user_answers)
 
 @app.route('/from_choice_to_answer', methods=['GET', 'UPDATE'])
@@ -334,6 +343,10 @@ def from_choice_to_answer():
 
     # add the choice/answer to the user_answers variable
     user_answers["drag_and_drop"].append(answer)
+
+    # update the score accordingly
+    if answer in question["ingredients"]:
+        user_answers["score"] = str(int(user_answers["score"]) + 1)
 
     question = quiz_questions[current_id]
     return jsonify(question = question, user_answers = user_answers)
@@ -355,6 +368,10 @@ def from_answer_to_choice():
 
     # add the choice/answer to the user_answers variable
     user_answers["drag_and_drop"].remove(answer)
+
+    # update the score accordingly
+    if answer in question["ingredients"]:
+        user_answers["score"] = str(int(user_answers["score"]) - 1)
 
     question = quiz_questions[current_id]
     return jsonify(question = question, user_answers = user_answers)

@@ -63,6 +63,7 @@ function display_answers(user_answers){
 }
 
 function from_choice_to_answer(answer, question) {
+    //add
     let data_to_change = {"answer": answer, "question": question}
     $.ajax({
         type: "UPDATE",
@@ -73,6 +74,7 @@ function from_choice_to_answer(answer, question) {
         success:function(result){
             question = result["question"]
             user_answers = result['user_answers']
+            score = result['user_answers']['score']
             possible_choices(question)
             display_answers(user_answers)
         },
@@ -86,6 +88,7 @@ function from_choice_to_answer(answer, question) {
 }
 
 function from_answer_to_choice(answer, question) {
+    //remove
     let data_to_change = {"answer": answer, "question": question}
     $.ajax({
         type: "UPDATE",
@@ -96,6 +99,7 @@ function from_answer_to_choice(answer, question) {
         success:function(result){
             question = result["question"]
             user_answers = result['user_answers']
+            score = result['user_answers']['score']
             possible_choices(question)
             display_answers(user_answers)
         },
@@ -108,43 +112,44 @@ function from_answer_to_choice(answer, question) {
     });
 }
 
-function update_answers(answer) {
-    let data_to_change = {"answer": answer}
-    $.ajax({
-        type: "UPDATE",
-        url: "/update_answers",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data_to_change),
-        success:function(result){
-            // let question = result["question"]
-            user_answers = result['user_answers']
-            possible_choices(question)
-            display_answers(user_answers)
-            // console.log(user_answers["image"])
-        },
-        error: function(request, status, error){
-            console.log("Error")
-            console.log(request)
-            console.log(status)
-            console.log(error)
-        }
-    });
-}
+// function update_answers(answer) {
+//     let data_to_change = {"answer": answer}
+//     $.ajax({
+//         type: "UPDATE",
+//         url: "/update_answers",
+//         dataType: "json",
+//         contentType: "application/json; charset=utf-8",
+//         data: JSON.stringify(data_to_change),
+//         success:function(result){
+//             // let question = result["question"]
+//             user_answers = result['user_answers']
+//             score = result['user_answers']['score']
+//             possible_choices(question)
+//             display_answers(user_answers)
+//             // console.log(user_answers["image"])
+//         },
+//         error: function(request, status, error){
+//             console.log("Error")
+//             console.log(request)
+//             console.log(status)
+//             console.log(error)
+//         }
+//     });
+// }
 
-function update_score(user_answer, question, option){
-    correct_answers = question["ingredients"]
-    console.log(correct_answers)
-    console.log(user_answer)
-    if (correct_answers.includes(user_answer)){
-        if (option == "add"){
-            score += 1
-        }
-        else{
-            score -= 1
-        }
-    }
-}
+// function update_score(user_answer, question, option){
+//     correct_answers = question["ingredients"]
+//     console.log(correct_answers)
+//     console.log(user_answer)
+//     if (correct_answers.includes(user_answer)){
+//         if (option == "add"){
+//             score += 1
+//         }
+//         else{
+//             score -= 1
+//         }
+//     }
+// }
 
 $(document).ready(function(){
     possible_choices(question)
@@ -162,7 +167,7 @@ $(document).ready(function(){
             // console.log(user_answers)
             // update_user_data(dragged_item)
             from_choice_to_answer(dragged_item, question)
-            update_score(dragged_item, question, "add")
+            // update_score(dragged_item, question, "add")
             // if dynamic updates fail, this works
             // user_answers["drag_and_drop"].push(dragged_item)
             // display_answers(user_answers)
@@ -175,12 +180,11 @@ $(document).ready(function(){
             event.preventDefault();
             let dragged_item = $(ui.draggable).attr("id")
             from_answer_to_choice(dragged_item, question)
-            update_score(dragged_item, question, "remove")
+            // update_score(dragged_item, question, "remove")
         }
     })
 
     $(".check_button").click(function(){
-        let image_feedback = ""
         if(user_answers["drag_and_drop"].length == 0){
             $("#error_div").empty()
             dd_feedback = $("<div class='incorrect'>Please drag at least 1 item!</div>")
