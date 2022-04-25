@@ -1,5 +1,3 @@
-let score = 0
-
 function create_images(question) {
     let altText1 = question["alt_text1"]
     let altText2 = question["alt_text2"]
@@ -38,6 +36,7 @@ function update_answers(answer) {
         data: JSON.stringify(data_to_change),
         success:function(result){
             user_answers = result['user_answers']
+            score = result['user_answers']["score"]
         },
         error: function(request, status, error){
             console.log("Error")
@@ -48,25 +47,15 @@ function update_answers(answer) {
     });
 }
 
-function update_score(user_answer, question, option){
-    correct_answers = question["ingredients"]
-    console.log(correct_answers)
-    console.log(user_answer)
-    if (correct_answers.includes(user_answer)){
-        if (option == "add"){
-            score += 1
-        }
-        else{
-            score -= 1
-        }
-    }
+function update_score(){
+    console.log("updating")
 }
 
 $(document).ready(function(){
     create_images(question)
     $('.next_button').click(function(){
         $(".next_feedback").empty()
-        next_feedback = $("<div class='incorrect'>Please answer the question!</div>")
+        next_feedback = $("<div class='incorrect'>Please select image and check!</div>")
         $('.next_feedback').append(next_feedback)
     })
 
@@ -74,15 +63,11 @@ $(document).ready(function(){
         $(this).addClass("image_selected")
         $('#wrong').removeClass("image_selected")
         update_answers("correct")
-        score += 1
     })
     $('#wrong').click(function(){
         $(this).addClass("image_selected")
         $('#correct').removeClass("image_selected")
         update_answers("wrong")
-        if (score > 0){
-            score -= 1
-        }
     })
 
     $(".check_button").click(function(){
@@ -90,7 +75,7 @@ $(document).ready(function(){
         let image_feedback = ""
         if (user_answers["image"] == "Not selected yet"){
             $("#results").empty()
-            image_feedback = $("<div class='incorrect'>Please select image!</div>")
+            image_feedback = $("<div class='incorrect'>Please select image and check!</div>")
             $("#results").append(image_feedback)
         }
         else{
