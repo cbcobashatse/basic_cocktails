@@ -16,30 +16,34 @@
                 </div>
                 <br><br>
                 <div class = "row">
-                    <img src="{{question.image}}" width="80%">
+                    <img src="{{question.image}}" width=100% alt="{{question.alt_text}}">
                 </div>
             </div>
         </div>
         <div class = "col-md-6">
-            <div class = "quiz_instructions row">
-                Fill in the blanks to complete the recipe. If the value is not an integer then include the 0 before the decimal (i.e. write 0.5 instead of .5).
+            <div class = "quiz_instructions">
+                <span><b>Fill in the blanks </b>to complete the recipe.</span><br>
+                <span>If the value is a decimal, then <b>include the 0 before the decimal point </b>(i.e. write 0.5 instead of .5).</span>
             </div>
 
             </br>
 
-            <div class = "row">
+            <div class = "recipe_header">
                 Recipe:
             </div>
             <div class = "fill_in_questions">
             </div>
-
-            </br></br>
-
-            <div class = "check_div">
-                <button class = "check_button"> Check </button>
-                <div class = "score">
+            <div class = "row">
+                <div class = "col-md-6 check_div">
+                    <button class = "check_button"> <b>Check</b> </button>
+                    <div class = "score">
+                    </div>
+                </div>
+                <div class = "col-md-6">
+                    <button class = "retry_button">Retry</button>
                 </div>
             </div>
+            <br>
 
             </br>
 
@@ -52,7 +56,7 @@
                     </div>
                     <div class = "col-md-6">
                         <button class = "quiz_home_button">
-                            Go back to quiz home
+                            Quiz Home
                         </button>
                     </div>
                 </div>

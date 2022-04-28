@@ -1,11 +1,20 @@
+img{
+    border: solid;
+    border-width: 1px;
+}
+
 .container{
     width: 100%;
     margin:auto;
     margin-top:30px;
 }
 
+body{
+    background-color:#FDF5DF;
+}
+
 .navbar{
-    background-color: rgb(234, 221, 202);
+    background-color: #a9a9a9;
 }
 
 .col-padding{
@@ -103,4 +112,56 @@
 
 #start-button{
     margin:auto; 
+}
+
+.quiz_name{
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: Gill Sans;
+}
+
+.fill_in_answer{
+    margin: 5px;
+    font-family: Gill Sans;
+}
+
+.recipe_header{
+    font-size: 20px;
+    font-family: Gill Sans;
+    color: #a9a9a9;
+}
+
+.quiz_instructions{
+    font-family: Gill Sans;
+    font-size: 20px;
+}
+
+.hint{
+    font-family: Gill Sans;
+}
+
+.back_button{
+    background-color: #dcdcdc;
+    border-radius: 4px;
+}
+
+.quiz_home_button{
+    background-color: #dcdcdc;
+    border-radius: 4px;
+}
+
+.other_quiz_button{
+    background-color: #a9a9a9;
+    color: white;
+    border-radius: 4px;
+}
+
+.check_button{
+    border-radius: 4px;
+    background-color: #5EBEC4;
+}
+
+.retry_button{
+    border-radius: 4px;
+    background-color: #dcdcdc;
 }
