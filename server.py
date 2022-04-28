@@ -11,7 +11,7 @@ cocktails = {
     "1":{
         "id": "1",
         "title": "Tequila Sunrise",
-        "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "description": "The tequila sunrise is a cocktail made of tequila, orange juice, and grenadine syrup. It's served unmixed in a tall glass. The modern drink originates from Sausalito, California, in the early 1970s after an earlier one created in the 1930s in Phoenix, Arizona.",
         "ingredients": ["1.5 oz Tequila", "4 oz Orange Juice", "0.25 oz Grenadine", "Cherry Garnish"], 
         "alt_text": ""
@@ -19,7 +19,7 @@ cocktails = {
     "2":{
         "id": "2",
         "title": "Cosmopolitan",
-        "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
+        "image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "description": "A cosmopolitan, according to Punch Magazine, is an alcoholic cocktail served in a martini glass made with a combination of vodka, cranberry juice, triple sec, and lime. It first came on the scene around the emergence of the Gay Rights movement, before the cocktail renaissance, as they put it, and stole the show, becoming a quick classic.",
         "ingredients": ["1.5 oz Citron Vodka", "0.5 oz Triple Sec", "0.5 oz Lime Juice", "1 oz Cranberry Juice", "0.5 oz Simple Syrup", "Lime Garnish"], 
         "alt_text": ""
@@ -27,7 +27,7 @@ cocktails = {
     "3":{
         "id": "3",
         "title": "Sex on the Beach",
-        "image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "description": "While no one can agree where the drink originated, many suggest the cocktail may have been invented when a bartender combined a Fuzzy Navel (peach schnapps and orange juice) with a Cape Codder (vodka and cranberry juice). Put those two drinks together, and all the constituent parts of the Sex on the Beach are accounted for. Some recipes also call for a small measure of crème de cassis, but that is usually considered optional.",
         "ingredients": ["1 oz Vodka", "0.5 oz Peach Schnapps", "2 oz Orange Juice", "2 oz Cranberry Juice"], 
         "alt_text": ""
@@ -56,9 +56,9 @@ quiz_questions = {
         "id": "1",
         "question_type": "Choose the correct image",
         "title": "Tequila Sunrise",
-        "correct_image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "correct_image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text1": "Tequila Sunrise cocktail",
-        "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "wrong_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text2": "Sex on the Beach cocktail",
         "max_score": "1",
         "next_question": "2"
@@ -70,7 +70,7 @@ quiz_questions = {
         "title": "Tequila Sunrise",
         "ingredients": ["Tequila", "Orange Juice", "Grenadine", "Cherry Garnish"],
         "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
-        "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text": "Tequila Sunrise cocktail",
         "max_score": "5",
         "next_question": "3"
@@ -108,7 +108,7 @@ quiz_questions = {
                 "answer_type": "text"
             }
         },
-        "image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text": "Tequila Sunrise cocktail",
         "max_score": "4",
     },
@@ -117,9 +117,9 @@ quiz_questions = {
         "id": "4",
         "question_type": "Choose the correct image",
         "title": "Cosmopolitan",
-        "correct_image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
+        "correct_image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "alt_text1": "Cosmopolitan cocktail",
-        "wrong_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "wrong_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text2": "Sex on the Beach cocktail",
         "max_score": "1",
         "next_question": "5"
@@ -183,7 +183,7 @@ quiz_questions = {
                 "answer_type": "text"
             }
         },
-        "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
+        "image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "alt_text": "Cosmopolitan cocktail",
         "max_score": "6",
     },
@@ -192,12 +192,12 @@ quiz_questions = {
         "id": "7",
         "question_type": "Choose the correct image",
         "title": "Sex on the Beach",
-        "correct_image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "correct_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text1": "Sex on the Beach cocktail",
-        "wrong_image": "https://foodworthfeed.com/wp-content/uploads/2021/05/Strawberry-Rose-Tequila-Sunrise.jpg",
+        "wrong_image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text2": "Tequila Sunrise cocktail",
         "max_score": "1",
-        "next_question": "5"
+        "next_question": "8"
     },    
 
     "8":{
@@ -206,7 +206,7 @@ quiz_questions = {
         "title": "Sex on the Beach",
         "ingredients": ["Vodka", "Peach Schnapps", "Orange Juice", "Cranberry Juice"],
         "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
-        "correct": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "correct": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text": "Sex on the Beach cocktail",
         "max_score": "4",
         "next_question": "9"
@@ -244,7 +244,7 @@ quiz_questions = {
                 "answer_type": "text"
             }
         },
-        "image": "https://vinepair.com/wp-content/uploads/2021/04/sexonthebeach_card-375x450.jpg",
+        "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text": "Sex on the Beach cocktail",
         "max_score": "4",
     },
