@@ -33,7 +33,8 @@ function create_link(cocktail) {
 
 $(document).ready(function(){
     console.log("quiz page reached")
-	create_link(cocktails["1"])
-	create_link(cocktails["2"])
-	create_link(cocktails["3"])
+    $.each(cocktails, function(index, value){
+        create_link(cocktails[index])
+    })
+	
 })
