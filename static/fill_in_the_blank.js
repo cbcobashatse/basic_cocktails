@@ -47,7 +47,7 @@ function make_other_quiz_buttons(){
                 $(".other_buttons").append(row)
                 row = $("<div class='row'></div>")
             }
-            let button = $("<div class='col-md-6'><button>" + "Go to " + name + " quiz" + "</button></div>")
+            let button = $("<div class='col-md-6'><button class='other_quiz_button'>" + name + " Quiz" + "</button></div>")
             row.append(button)
             $(button).click(function(){
                 // changed the formula to account for the change in the data structure
@@ -118,5 +118,10 @@ $(document).ready(function(){
     $(".back_button").click(function(){
         let id = parseInt(question["id"]) - 1
         document.location.href = "/quiz/" + id
+    })
+
+    $(".retry_button").click(function(){
+        location.reload(true)
+        
     })
 })
