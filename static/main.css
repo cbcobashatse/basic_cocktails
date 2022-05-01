@@ -15,6 +15,7 @@ body{
 
 .navbar{
     background-color: #a9a9a9;
+    font-family: Gill Sans;
 }
 
 .col-padding{
@@ -156,6 +157,10 @@ body{
     border-radius: 4px;
 }
 
+.check_div{
+    font-family: Gill Sans;
+}
+
 .check_button{
     border-radius: 4px;
     background-color: #5EBEC4;
@@ -164,4 +169,40 @@ body{
 .retry_button{
     border-radius: 4px;
     background-color: #dcdcdc;
+}
+
+button{
+    font-family: Gill Sans;
+}
+
+.card{
+    font-family: Gill Sans;
+}
+
+.quiz_homepage_header{
+    font-family: Gill Sans;
+    font-size: 18px;
+}
+
+.quiz_card_title{
+    font-size: 25px
+}
+
+.take_quiz_button{
+    font-weight: bold;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: #5EBEC4;
+}
+
+.task{
+    font-family: Gill Sans;
+}
+
+.choices{
+    font-family: Gill Sans;
+}
+
+.score{
+    font-family: Gill Sans;
 }
