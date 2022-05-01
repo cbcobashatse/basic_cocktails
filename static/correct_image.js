@@ -47,12 +47,68 @@ function update_answers(answer) {
     });
 }
 
-function update_score(){
-    console.log("updating")
+function question_answered(question_no) {
+    let data_to_change = {"question_no": question_no}
+    $.ajax({
+        type: "UPDATE",
+        url: "/answered",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data_to_change),
+        success:function(result){
+            user_answers = result['user_answers']
+            score = result['user_answers']["score"]
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
+function fill_in_answers(user_answers){
+    image_answer = user_answers['image']
+    if (image_answer != "Not selected yet"){
+        image_id = "#" + image_answer
+        $(image_id).addClass("image_selected ")
+
+        $("#results").empty()
+        if (image_answer == 'correct'){
+            image_feedback = $("<div class='correct'>Correct image!</div>")
+        }
+        else{
+            image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
+        }
+        $("#results").append(image_feedback)
+        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold")
+
+        //replacing the check button with the next button
+        $('#check_next_button').removeClass("check_button")
+        $('#check_next_button').addClass("next_button")
+        $('#check_next_button').text("Next Question")
+
+        $('.next_button').click(function(){
+            $(".next_feedback").empty()
+            console.log("clicked")
+            let next_id = question["next_question"]
+            document.location.href = "/quiz/" + next_id
+            console.log("next")
+        })
+    } 
 }
 
 $(document).ready(function(){
     create_images(question)
+    // let score = user_answers['score']
+    let answered = user_answers['answered']["1"]
+    fill_in_answers(user_answers)
+
+    $(".quiz_home_button").click(function(){
+        document.location.href = "/quiz"
+    })
+
     $('.next_button').click(function(){
         $(".next_feedback").empty()
         next_feedback = $("<div class='incorrect'>Please select image and check!</div>")
@@ -60,14 +116,20 @@ $(document).ready(function(){
     })
 
     $('#correct').click(function(){
-        $(this).addClass("image_selected")
-        $('#wrong').removeClass("image_selected")
-        update_answers("correct")
+        if (answered == "No"){
+            $(this).addClass("image_selected")
+            $('#wrong').removeClass("image_selected")
+            update_answers("correct")
+        } 
+        // console.log(user_answers['score'])
+        // console.log("here")
     })
     $('#wrong').click(function(){
-        $(this).addClass("image_selected")
-        $('#correct').removeClass("image_selected")
-        update_answers("wrong")
+        if (answered == "No"){
+            $(this).addClass("image_selected")
+            $('#correct').removeClass("image_selected")
+            update_answers("wrong")
+        }
     })
 
     $(".check_button").click(function(){
@@ -88,8 +150,21 @@ $(document).ready(function(){
                 image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
             }
             $("#results").append(image_feedback)
-            $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
-            console.log(user_answers)
+            // $("#score").html("Overall score: ")
+            $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold")
+            // console.log(user_answers)
+
+            //replacing the check button with the next button
+            $('#check_next_button').removeClass("check_button")
+            $('#check_next_button').addClass("next_button")
+            $('#check_next_button').text("Next Question")
+
+            //disable click event for the images
+            $('#correct').off('click')
+            $('#wrong').off('click')
+
+            //record that the question has been answered
+            question_answered("1")
         }
 
         $('.next_button').click(function(){

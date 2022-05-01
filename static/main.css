@@ -38,6 +38,8 @@ body{
 
 .score{
     display: inline-block;
+    /* display: flex; */
+    /* text-align: center; */
 }
 
 .error{
@@ -56,8 +58,8 @@ body{
 .dd_image{
     margin-top: 20px;
     max-height: 250px;
-    margin-left: 150px;
-    margin-right: 50px;
+    margin-left: 175px;
+    margin-right: 70px;
 }
 
 .quiz_images{
@@ -159,9 +161,29 @@ body{
 .check_button{
     border-radius: 4px;
     background-color: #5EBEC4;
+    margin-left: 30px;
+}
+
+.prev_button{
+    border-radius: 4px;
+    background-color: #5EBEC4;
+    margin-left: 20px;
+}
+
+.next_button{
+    border-radius: 4px;
+    margin-left: 30px;
 }
 
 .retry_button{
     border-radius: 4px;
     background-color: #dcdcdc;
+}
+
+.feedback{
+    margin-top: 20px;
+}
+
+.results{
+    text-align: center;
 }

@@ -60,7 +60,7 @@ quiz_questions = {
         "alt_text1": "Tequila Sunrise cocktail",
         "wrong_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text2": "Sex on the Beach cocktail",
-        "max_score": "1",
+        "max_score": "9",
         "next_question": "2"
     },
 
@@ -72,7 +72,7 @@ quiz_questions = {
         "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text": "Tequila Sunrise cocktail",
-        "max_score": "5",
+        "max_score": "9",
         "next_question": "3"
     },
 
@@ -110,7 +110,7 @@ quiz_questions = {
         },
         "image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text": "Tequila Sunrise cocktail",
-        "max_score": "4",
+        "max_score": "9",
     },
 
     "4":{
@@ -121,7 +121,7 @@ quiz_questions = {
         "alt_text1": "Cosmopolitan cocktail",
         "wrong_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text2": "Sex on the Beach cocktail",
-        "max_score": "1",
+        "max_score": "13",
         "next_question": "5"
     },
 
@@ -133,7 +133,7 @@ quiz_questions = {
         "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "image": "https://images.food52.com/aJEv48_UtTTPlnWv5m4FoaUKzIU=/fit-in/1200x1200/4af84f60-dc41-4b3e-ae24-068bb2d5bed0--2019-0905_cosmopolitan_3x2_rocky-luten_069.jpg",
         "alt_text": "Cosmopolitan cocktail",
-        "max_score": "6",
+        "max_score": "13",
         "next_question": "6"
     },
 
@@ -185,7 +185,7 @@ quiz_questions = {
         },
         "image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "alt_text": "Cosmopolitan cocktail",
-        "max_score": "6",
+        "max_score": "13",
     },
 
     "7":{
@@ -196,7 +196,7 @@ quiz_questions = {
         "alt_text1": "Sex on the Beach cocktail",
         "wrong_image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text2": "Tequila Sunrise cocktail",
-        "max_score": "1",
+        "max_score": "8",
         "next_question": "8"
     },    
 
@@ -208,7 +208,7 @@ quiz_questions = {
         "choices": ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "correct": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text": "Sex on the Beach cocktail",
-        "max_score": "4",
+        "max_score": "8",
         "next_question": "9"
     },
 
@@ -246,7 +246,7 @@ quiz_questions = {
         },
         "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text": "Sex on the Beach cocktail",
-        "max_score": "4",
+        "max_score": "8",
     },
 }
 
@@ -254,7 +254,8 @@ user_answers = {
     "image" : "Not selected yet",
     "drag_and_drop": [],
     "fill_in_blank": [],
-    "score": "0"
+    "score": "0",
+    "answered": {"1": "No", "2": "No", "3": "No"}
 }
 
 ####################################ROUTES####################################
@@ -304,9 +305,43 @@ def quiz_cocktail(id=None):
 
 #-----------AJAX code-------------#
 
+@app.route('/answered', methods = ['GET', 'UPDATE'])
+def answered():
+    global user_answers
+
+    # print('answered')
+
+    # get data from JSON
+    json_data = request.get_json()
+    question_no = json_data["question_no"]
+
+    user_answers["answered"][question_no] = "Yes"
+
+    return jsonify(user_answers = user_answers)
+
+@app.route('/reset_score', methods = ['GET', 'UPDATE'])
+def reset_score():
+    # print("got here")
+    global user_answers
+
+    # # get data from JSON
+    # json_data = request.get_json()
+    # answer = json_data["answer"]
+
+    # update the answers
+    user_answers["image"] = "Not selected yet"
+    user_answers["drag_and_drop"] = []
+    user_answers["fill_in_blank"] = []
+    user_answers["score"] = "0"
+    user_answers["answered"]["1"] = "No"
+    user_answers["answered"]["2"] = "No"
+    user_answers["answered"]["3"] = "No"
+
+    return jsonify(user_answers = user_answers)
+
 @app.route('/update_answers', methods = ['GET', 'UPDATE'])
 def update_answers():
-    print("got here")
+    # print("got here")
     global user_answers
 
     # get data from JSON

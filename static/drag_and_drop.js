@@ -1,35 +1,5 @@
 let score = 0
 
-function create_images(question) {
-    // let question_id = question['id']
-    // let cocktail_id = (parseInt(question_id) + 1) / 2
-    let altText1 = question["alt_text1"]
-    let altText2 = question["alt_text2"]
-
-    let random_num = Math.floor((Math.random() * 2) + 1);
-    
-    let col_1 = $('<div class="col-md-6"></div>')
-    let col_2 = $('<div class="col-md-6"></div>')
-
-    correct_image = question["correct_image"]
-    wrong_image = question["wrong_image"]
-
-    correct = "<img id='correct' class='dd_image' src='"+correct_image+"'"+" alt='"+altText1+"'>"
-    wrong = "<img id='wrong' class='dd_image' src='"+wrong_image+"'"+" alt='"+altText2 + "'>"
-
-    if (random_num == 1){
-        $(col_1).append(correct)
-        $(col_2).append(wrong)
-    }
-    else{
-        $(col_2).append(correct)
-        $(col_1).append(wrong)
-    }
-    $("#images_div").append(col_1)
-    $("#images_div").append(col_2) 
-    console.log("done")
-}
-
 function possible_choices(question) {
     $("#choices").empty()
     choices = question["choices"]
@@ -55,6 +25,34 @@ function display_answers(user_answers){
             $(answer).text(value)
             $(answer).attr('id', value)
             $(answer).draggable()
+    
+            $(col).append(answer)
+            $("#user_answers").append(col)
+        }
+    });
+}
+
+function answers_feedback(user_answers, question){
+    $("#user_answers").empty()
+    answers = user_answers["drag_and_drop"]
+    ingredients = question["ingredients"]
+    // console.log(ingredients)
+    $.each(answers, function(index, value){
+        if (value != "Not selected yet"){
+            let col = $('<div class="col-md-4"></div>')
+            let answer = $('<div class="choice">')
+            $(answer).text(value)
+            $(answer).attr('id', value)
+            $(answer).draggable()
+
+            if(ingredients.indexOf(value) >= 0){
+                $(answer).removeClass("incorrect")
+                $(answer).addClass("correct")
+            }
+            else{
+                $(answer).removeClass("correct")
+                $(answer).addClass("incorrect")
+            }
     
             $(col).append(answer)
             $("#user_answers").append(col)
@@ -112,6 +110,27 @@ function from_answer_to_choice(answer, question) {
     });
 }
 
+function question_answered(question_no) {
+    let data_to_change = {"question_no": question_no}
+    $.ajax({
+        type: "UPDATE",
+        url: "/answered",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data_to_change),
+        success:function(result){
+            user_answers = result['user_answers']
+            score = result['user_answers']["score"]
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
 // function update_answers(answer) {
 //     let data_to_change = {"answer": answer}
 //     $.ajax({
@@ -148,16 +167,52 @@ function from_answer_to_choice(answer, question) {
 //         else{
 //             score -= 1
 //         }
-//     }
+//     
 // }
+
+function fill_in_answers(user_answers, question){
+    dd_answers = user_answers['drag_and_drop']
+    if (dd_answers.length > 0){
+        console.log("doing it")
+        $("#feedback_div").empty()
+        let results = $("<div>Correct answers in Green, Incorrect answers in Red!</div>")
+        $("#feedback_div").append(results)
+        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold")
+        answers_feedback(user_answers, question)
+
+        //replacing the check button with the next button
+        $('#check_next_button').removeClass("check_button")
+        $('#check_next_button').addClass("next_button")
+        $('#check_next_button').text("Next Question")
+
+        //disable drag and drop option after the check
+        $('.choice').draggable({
+            disabled: true
+        });
+
+        $(".next_button").click(function(){
+            // let id = question["id"]
+            let next_id = question["next_question"]
+            document.location.href = "/quiz/" + next_id
+            console.log("next")
+        })
+    }
+}
 
 $(document).ready(function(){
     possible_choices(question)
+    display_answers(user_answers)
+    fill_in_answers(user_answers, question)
 
     $('.next_button').click(function(){
         $(".next_feedback").empty()
         next_feedback = $("<div class='incorrect'>Please answer the question!</div>")
         $('.next_feedback').append(next_feedback)
+    })
+
+    $('.prev_button').click(function(){
+        let id = parseInt(question["id"]) - 1
+        document.location.href = "/quiz/" + id
     })
 
     $("#user_answers").droppable({
@@ -186,14 +241,29 @@ $(document).ready(function(){
 
     $(".check_button").click(function(){
         if(user_answers["drag_and_drop"].length == 0){
-            $("#error_div").empty()
-            dd_feedback = $("<div class='incorrect'>Please drag at least 1 item!</div>")
-            $("#error_div").append(dd_feedback)
+            $("#feedback_div").empty()
+            let dd_feedback = $("<div class='incorrect'>Please drag at least 1 item!</div>")
+            $("#feedback_div").append(dd_feedback)
         }
         else{
-            $("#error_div").empty()
-            $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
+            $("#feedback_div").empty()
+            let results = $("<div>Correct answers in Green, Incorrect answers in Red!</div>")
+            $("#feedback_div").append(results)
+            $("#score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
+            answers_feedback(user_answers, question)
             console.log(user_answers)
+
+            //replacing the check button with the next button
+            $('#check_next_button').removeClass("check_button")
+            $('#check_next_button').addClass("next_button")
+            $('#check_next_button').text("Next Question")
+
+            //disable drag and drop option after the check
+            $('.choice').draggable({
+                disabled: true
+            });
+
+            question_answered("2")
         }
 
         $(".next_button").click(function(){

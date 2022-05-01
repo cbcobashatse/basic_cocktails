@@ -1,3 +1,24 @@
+function reset_score() {
+    // let data_to_change = {"answer": answer}
+    $.ajax({
+        type: "UPDATE",
+        url: "/reset_score",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        // data: JSON.stringify(data_to_change),
+        success:function(result){
+            user_answers = result['user_answers']
+            score = result['user_answers']["score"]
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
 function make_quiz(){
     let lines = question["lines"]
     let input_id=1
@@ -50,6 +71,11 @@ function make_other_quiz_buttons(){
             let button = $("<div class='col-md-6'><button class='other_quiz_button'>" + name + " Quiz" + "</button></div>")
             row.append(button)
             $(button).click(function(){
+                // routine to bring back to score to 0
+                reset_score()
+
+                console.log("changed scores")
+
                 // changed the formula to account for the change in the data structure
                 let id = 3*(parseInt(cocktails[index]["id"])) - 2
                 document.location.href = "/quiz/" + id
@@ -103,7 +129,9 @@ function check_answers(){
             $(this).attr("disabled", "disabled")
         })
 
-        $(".score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
+        new_score = score + parseInt(user_answers['score'])
+
+        $(".score").html(new_score + "/" + question["max_score"]).css("font-weight", "bold")
     }
 }
 
@@ -121,7 +149,11 @@ $(document).ready(function(){
     })
 
     $(".retry_button").click(function(){
-        location.reload(true)
+        // location.reload(true)
+        reset_score()
+
+        let id = parseInt(question["id"]) - 2
+        document.location.href = "/quiz/" + id
         
     })
 })
