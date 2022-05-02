@@ -235,3 +235,7 @@ button{
     color: darkgrey;
     font-family: Gill Sans;
 }
+
+.home-image{
+    width:100%; 
+}
