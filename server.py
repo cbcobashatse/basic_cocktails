@@ -13,24 +13,30 @@ cocktails = {
         "title": "Tequila Sunrise",
         "image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "description": "The tequila sunrise is a cocktail made of tequila, orange juice, and grenadine syrup. It's served unmixed in a tall glass. The modern drink originates from Sausalito, California, in the early 1970s after an earlier one created in the 1930s in Phoenix, Arizona.",
+        "quiz_home_image": "https://cdn.wallpapersafari.com/61/40/2oEi6K.jpg",
         "ingredients": ["1.5 oz Tequila", "4 oz Orange Juice", "0.25 oz Grenadine", "Cherry Garnish"], 
-        "alt_text": ""
+        "alt_text": "",
+        "quiz_home_alt_text": "A sunrise"
     },
     "2":{
         "id": "2",
         "title": "Cosmopolitan",
         "image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "description": "A cosmopolitan, according to Punch Magazine, is an alcoholic cocktail served in a martini glass made with a combination of vodka, cranberry juice, triple sec, and lime. It first came on the scene around the emergence of the Gay Rights movement, before the cocktail renaissance, as they put it, and stole the show, becoming a quick classic.",
+        "quiz_home_image": "https://www.greentechmedia.com/assets/content/cache/made/assets/content/cache/remote/https_assets.greentechmedia.com/content/images/articles/New_York_City_Electricity_Energy_XL_500_500_80_s_c1.jpg",
         "ingredients": ["1.5 oz Citron Vodka", "0.5 oz Triple Sec", "0.5 oz Lime Juice", "1 oz Cranberry Juice", "0.5 oz Simple Syrup", "Lime Garnish"], 
-        "alt_text": ""
+        "alt_text": "",
+        "quiz_home_alt_text": "A cosmopolitan city"
     },
     "3":{
         "id": "3",
         "title": "Sex on the Beach",
         "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "description": "While no one can agree where the drink originated, many suggest the cocktail may have been invented when a bartender combined a Fuzzy Navel (peach schnapps and orange juice) with a Cape Codder (vodka and cranberry juice). Put those two drinks together, and all the constituent parts of the Sex on the Beach are accounted for. Some recipes also call for a small measure of crème de cassis, but that is usually considered optional.",
+        "quiz_home_image": "https://m.media-amazon.com/images/I/51kq+EL94iL.jpg",
         "ingredients": ["1 oz Vodka", "0.5 oz Peach Schnapps", "2 oz Orange Juice", "2 oz Cranberry Juice"], 
-        "alt_text": ""
+        "alt_text": "",
+        "quiz_home_alt_text": "A beach"
     }
 }
 
@@ -58,7 +64,7 @@ quiz_questions = {
         "title": "Tequila Sunrise",
         "correct_image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
         "alt_text1": "Tequila Sunrise cocktail",
-        "wrong_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
+        "wrong_image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "alt_text2": "Sex on the Beach cocktail",
         "max_score": "9",
         "next_question": "2"
@@ -194,7 +200,7 @@ quiz_questions = {
         "title": "Sex on the Beach",
         "correct_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text1": "Sex on the Beach cocktail",
-        "wrong_image": "https://www.jocooks.com/wp-content/uploads/2020/05/tequila-sunrise-1-4-500x500.jpg",
+        "wrong_image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "alt_text2": "Tequila Sunrise cocktail",
         "max_score": "8",
         "next_question": "8"

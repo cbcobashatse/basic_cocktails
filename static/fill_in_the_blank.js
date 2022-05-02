@@ -95,18 +95,18 @@ function check_answers(){
         let id = $(this).attr("id")
         if($(this).val()==""){
             error = 1
-            let error_msg = $("<div class='col-md-12 error'>Please enter an answer</div>")
+            let error_msg = $("<div class='col-md-12 error'>Please enter an answer</div>").css("font-family","Gill Sans")
             $(this).parent().append(error_msg)
         }
 
         else if(!($.isNumeric($(this).val())) && question["lines"][id]["answer_type"]=="numeric"){
             error = 1
-            let error_msg = $("<div class='col-md-12 error'>Please enter a numerical value</div>")
+            let error_msg = $("<div class='col-md-12 error'>Please enter a numerical value</div>").css("font-family","Gill Sans")
             $(this).parent().append(error_msg)
         }
         else if($.isNumeric($(this).val()) && question["lines"][id]["answer_type"]=="text"){
             error = 1
-            let error_msg = $("<div class='col-md-12 error'>Please enter a non-numerical value</div>")
+            let error_msg = $("<div class='col-md-12 error'>Please enter a non-numerical value</div>").css("font-family","Gill Sans")
             $(this).parent().append(error_msg)
         }
 
@@ -118,11 +118,11 @@ function check_answers(){
             let answer = question["lines"][id]["answer"]
             if(val == answer.toLowerCase()){
                 score = score + 1
-                let feedback = $("<div class='correct'>Correct</div>")
+                let feedback = $("<div class='correct'>Correct</div>").css("font-family","Gill Sans")
                 $(this).parent().append(feedback)
             }
             else{
-                let feedback = $("<div class='incorrect'>" + "Incorrect." + " Correct answer: " + answer + "</div>")
+                let feedback = $("<div class='incorrect'>" + "Incorrect." + " Correct answer: " + answer + "</div>").css("font-family","Gill Sans")
                 $(this).parent().append(feedback)
             }
 
