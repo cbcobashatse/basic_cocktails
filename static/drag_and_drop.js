@@ -60,30 +60,33 @@ function answers_feedback(user_answers, question){
     });
 }
 
-function choices_feedback(question){
+function choices_feedback(user_answers, question){
     $("#choices").empty()
     choices = question["choices"]
     ingredients = question["ingredients"]
     // console.log(ingredients)
     $.each(choices, function(index, value){
         // if (value != "Not selected yet"){
-        let col = $('<div class="col-md-4"></div>')
-        let choice = $('<div class="choice">')
-        $(choice).text(value)
-        $(choice).attr('id', value)
-        $(choice).draggable()
 
-        if(ingredients.indexOf(value) >= 0){
-            $(choice).removeClass("incorrect")
-            $(choice).addClass("correct")
-        }
-        else{
-            $(choice).removeClass("correct")
-            $(choice).addClass("incorrect")
-        }
+        if (user_answers["drag_and_drop"].indexOf(value) < 0){
+            let col = $('<div class="col-md-4"></div>')
+            let choice = $('<div class="choice">')
+            $(choice).text(value)
+            $(choice).attr('id', value)
+            $(choice).draggable()
 
-        $(col).append(choice)
-        $("#choices").append(col)
+            if(ingredients.indexOf(value) >= 0){
+                $(choice).removeClass("incorrect")
+                $(choice).addClass("correct")
+            }
+            else{
+                $(choice).removeClass("correct")
+                $(choice).addClass("incorrect")
+            }
+
+            $(col).append(choice)
+            $("#choices").append(col)
+        }
         // }
     });
 }
@@ -208,7 +211,7 @@ function fill_in_answers(user_answers, question){
         $("#feedback_div").append(results)
         $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
         answers_feedback(user_answers, question)
-        choices_feedback(question)
+        choices_feedback(user_answers, question)
 
         //replacing the check button with the next button
         $('#check_next_button').removeClass("check_button")
@@ -281,6 +284,8 @@ $(document).ready(function(){
             $("#feedback_div").append(results)
             $("#score").html(score + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
             answers_feedback(user_answers, question)
+            console.log(question["choices"])
+            choices_feedback(user_answers, question)
             console.log(user_answers)
 
             //replacing the check button with the next button
