@@ -3,9 +3,14 @@ function create_card(cocktail){
     let curCocktail = cocktail
     let title = curCocktail["title"]
     let ingredients = curCocktail['ingredients']
+    ingredients_html = "<ol>"
+    for(let i = 0; i < ingredients.length; i++){
+      ingredients_html = ingredients_html + "<li>" + ingredients[i] + "</li>"
+    }
+    ingredients_html = ingredients_html + "</ol>"
     let image = curCocktail["image"]
     front.innerHTML = "<img src='"+image+"' width= '300'>";
-    back.innerHTML = ingredients;
+    back.innerHTML = ingredients_html;
     back.style.visibility = "hidden";
 
 }
