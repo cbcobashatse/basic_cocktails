@@ -422,6 +422,7 @@ def from_choice_to_answer():
         user_answers["score"] = str(int(user_answers["score"]) + 1)
 
     question = quiz_questions[current_id]
+    print(question["choices"])
     return jsonify(question = question, user_answers = user_answers)
 
 @app.route('/from_answer_to_choice', methods=['GET', 'UPDATE'])
@@ -447,6 +448,8 @@ def from_answer_to_choice():
         user_answers["score"] = str(int(user_answers["score"]) - 1)
 
     question = quiz_questions[current_id]
+    print(question["choices"])
+
     return jsonify(question = question, user_answers = user_answers)
 
 
