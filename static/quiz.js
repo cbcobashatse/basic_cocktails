@@ -2,6 +2,28 @@
 //     console.log("quiz page reached")
 // })
 
+function reset_score() {
+    // let data_to_change = {"answer": answer}
+    $.ajax({
+        type: "UPDATE",
+        url: "/reset_score",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        // data: JSON.stringify(data_to_change),
+        success:function(result){
+            user_answers = result['user_answers']
+            question = result['question']
+            score = result['user_answers']["score"]
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+}
+
 function create_link(cocktail) {
     
     let curCocktail = cocktail
@@ -25,6 +47,7 @@ function create_link(cocktail) {
     let button = $('<button class="btn take_quiz_button">Take Quiz</button>')
     $(button).attr("id", quiz_id)
     $(button).click(function(){
+        reset_score()
         document.location.href = "/quiz/" + $(this).attr("id")
     })
 

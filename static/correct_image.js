@@ -76,10 +76,10 @@ function fill_in_answers(user_answers){
 
         $("#results").empty()
         if (image_answer == 'correct'){
-            image_feedback = $("<div class='correct'>Correct image!</div>").css("font-family","Gill Sans")
+            image_feedback = $("<div class='correct'>Correct image selected!</div>").css("font-family","Gill Sans")
         }
         else{
-            image_feedback = $("<div class='incorrect'>Incorrect image!</div>").css("font-family", "Gill Sans")
+            image_feedback = $("<div class='incorrect'>Incorrect image selected!</div>").css("font-family", "Gill Sans")
         }
         $("#results").append(image_feedback)
         $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
@@ -143,11 +143,11 @@ $(document).ready(function(){
         else{
             if (user_answers["image"] == 'correct'){
                 $("#results").empty()
-                image_feedback = $("<div class='correct'>Correct image!</div>")
+                image_feedback = $("<div class='correct'>Correct image selected!</div>")
             }
             else{
                 $("#results").empty()
-                image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
+                image_feedback = $("<div class='incorrect'>Incorrect image selected!</div>")
             }
             $("#results").append(image_feedback)
             // $("#score").html("Overall score: ")
