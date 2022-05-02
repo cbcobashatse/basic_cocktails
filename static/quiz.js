@@ -18,13 +18,15 @@ function create_link(cocktail) {
     $(cardBody).append(cardText)
 
     quiz_id = (curCocktail['id'] * 3) - 2
+
     // console.log(quiz_id)
     
-    let button = $('<button class="btn take_quiz_button">Take Quiz</button>' )
-    
+    let button = $('<button class="btn take_quiz_button">Take Quiz</button>')
+    $(button).attr("id", quiz_id)
     $(button).click(function(){
-        document.location.href = "/quiz/" + quiz_id
+        document.location.href = "/quiz/" + $(this).attr("id")
     })
+
     
     //NEW 
     $(cardContainer).append(cardBody)

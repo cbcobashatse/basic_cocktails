@@ -79,10 +79,10 @@ function fill_in_answers(user_answers){
             image_feedback = $("<div class='correct'>Correct image!</div>")
         }
         else{
-            image_feedback = $("<div class='incorrect'>Incorrect image!</div>")
+            image_feedback = $("<div class='incorrect'>Incorrect image!</div>").css("font-family", "Gill Sans")
         }
         $("#results").append(image_feedback)
-        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold")
+        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
 
         //replacing the check button with the next button
         $('#check_next_button').removeClass("check_button")
@@ -151,7 +151,7 @@ $(document).ready(function(){
             }
             $("#results").append(image_feedback)
             // $("#score").html("Overall score: ")
-            $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold")
+            $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
             // console.log(user_answers)
 
             //replacing the check button with the next button
