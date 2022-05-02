@@ -223,3 +223,15 @@ button{
     background-color: #dcdcdc;   
     border-radius: 3px;
 }
+
+.home-title{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Gill Sans;
+    
+}
+
+.instructions{
+    color: darkgrey;
+    font-family: Gill Sans;
+}
