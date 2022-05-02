@@ -259,7 +259,7 @@ quiz_questions = {
 user_answers = {
     "image" : "Not selected yet",
     "drag_and_drop": [],
-    "fill_in_blank": [],
+    "fill_in_the_blank": {},
     "score": "0",
     "answered": {"1": "No", "2": "No", "3": "No"}
 }
@@ -311,6 +311,32 @@ def quiz_cocktail(id=None):
 
 #-----------AJAX code-------------#
 
+@app.route('/update_fill_in_the_blank', methods = ['GET', 'UPDATE'])
+def update_fill_in_the_blank():
+    global user_answers
+
+    # print(user_answers["answered"]["3"])
+
+    # get data from JSON
+    json_data = request.get_json()
+    ids = json_data["ids"]
+    user_values = json_data["user_values"]
+    correctness = json_data["correctness"]
+
+    for i in range(len(ids)):
+        user_answers['fill_in_the_blank'][ids[i]] = [user_values[i], correctness[i]]
+        if correctness[i] == "Yes":
+            # print("incrementing")
+            user_answers["score"] = str(int(user_answers["score"]) + 1)
+
+    user_answers["answered"]["3"] = "Yes"
+
+    # print(user_answers["fill_in_the_blank"])
+    # print(user_answers["answered"]["3"])
+    # print(user_answers["score"])
+
+    return jsonify(user_answers = user_answers, score = user_answers["score"])
+
 @app.route('/answered', methods = ['GET', 'UPDATE'])
 def answered():
     global user_answers
@@ -329,6 +355,7 @@ def answered():
 def reset_score():
     # print("got here")
     global user_answers
+    global question
 
     # # get data from JSON
     # json_data = request.get_json()
@@ -343,7 +370,12 @@ def reset_score():
     user_answers["answered"]["2"] = "No"
     user_answers["answered"]["3"] = "No"
 
-    return jsonify(user_answers = user_answers)
+    # update the choices for the drag and drop questions
+    question["2"]["choices"] = ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"]
+    question["5"]["choices"] = ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"]
+    question["8"]["choices"] = ["Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"]
+
+    return jsonify(user_answers = user_answers, question = question)
 
 @app.route('/update_answers', methods = ['GET', 'UPDATE'])
 def update_answers():

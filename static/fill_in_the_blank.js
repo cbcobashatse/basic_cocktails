@@ -8,6 +8,7 @@ function reset_score() {
         // data: JSON.stringify(data_to_change),
         success:function(result){
             user_answers = result['user_answers']
+            question = result['question']
             score = result['user_answers']["score"]
         },
         error: function(request, status, error){
@@ -85,6 +86,31 @@ function make_other_quiz_buttons(){
     $(".other_buttons").append(row)
 }
 
+function update_fill_in_the_blank(ids, user_values, correctness) {
+    // let score = 0
+    let data_to_change = {"ids": ids, "user_values": user_values, "correctness": correctness}
+    $.ajax({
+        type: "UPDATE",
+        url: "/update_fill_in_the_blank",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data_to_change),
+        success:function(result){
+            user_answers = result['user_answers']
+            score = result["score"]
+            // console.log(score)
+        },
+        error: function(request, status, error){
+            console.log("Error")
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+    // console.log(score)
+    // return score
+}
+
 function check_answers(){
     $(".error").empty()
     $(".correct").empty()
@@ -112,32 +138,93 @@ function check_answers(){
 
     })
     if(error != 1){
+        let ids = []
+        let user_values = []
+        let answers = []
+        let correctness = []
         $(".fill_in_answer").each(function(){
             let val = $(this).val().toLowerCase()
             let id = $(this).attr("id")
             let answer = question["lines"][id]["answer"]
+            
+            ids.push(id)
+            user_values.push(val)
+            answers.push(answer)
+            // console.log(id)
+
+
             if(val == answer.toLowerCase()){
                 score = score + 1
                 let feedback = $("<div class='correct'>Correct</div>").css("font-family","Gill Sans")
                 $(this).parent().append(feedback)
+
+                correctness.push("Yes")
             }
             else{
                 let feedback = $("<div class='incorrect'>" + "Incorrect." + " Correct answer: " + answer + "</div>").css("font-family","Gill Sans")
                 $(this).parent().append(feedback)
+
+                correctness.push("No")
             }
 
             $(this).attr("disabled", "disabled")
         })
 
+        update_fill_in_the_blank(ids, user_values, correctness)
+
+        // console.log(ids)
+        // console.log(user_values)
+        // console.log(answers)
+        // console.log(correctness)
+
+        // console.log(user_answers["answered"]["3"])
+
+        // console.log(score)
+
         new_score = score + parseInt(user_answers['score'])
 
         $(".score").html(new_score + "/" + question["max_score"]).css("font-weight", "bold")
+
+        $(".check_button").off('click')
+    }
+}
+
+function fill_in_answers(user_answers, question){
+    if (user_answers["answered"]["3"] == "Yes"){
+        console.log("already answered")
+        $(".fill_in_answer").each(function(index, value){
+            id = (index + 1).toString()
+            user_answer = user_answers['fill_in_the_blank'][id][0]
+            correctness = user_answers['fill_in_the_blank'][id][1]
+            $(this).val(user_answer)
+            if (correctness == "Yes"){
+                let feedback = $("<div class='correct'>Correct</div>").css("font-family","Gill Sans")
+                $(this).parent().append(feedback)
+            }
+            else{
+                let correct_answer = question["lines"][id]["answer"]
+                let feedback = $("<div class='incorrect'>" + "Incorrect." + " Correct answer: " + correct_answer + "</div>").css("font-family","Gill Sans")
+                $(this).parent().append(feedback)
+            }
+
+            $(this).attr("disabled", "disabled")
+
+            $(".score").html(user_answers["score"] + "/" + question["max_score"]).css("font-weight", "bold")
+
+            $(".check_button").off('click')
+
+            // console.log(id)
+            // console.log(value)
+        });
     }
 }
 
 $(document).ready(function(){
     make_quiz()
+    fill_in_answers(user_answers, question)
     make_other_quiz_buttons()
+
+    // console.log(user_answers["answered"]["3"])
 
     $(".quiz_home_button").click(function(){
         document.location.href = "/quiz"
