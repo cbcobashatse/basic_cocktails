@@ -76,7 +76,7 @@ function fill_in_answers(user_answers){
 
         $("#results").empty()
         if (image_answer == 'correct'){
-            image_feedback = $("<div class='correct'>Correct image!</div>")
+            image_feedback = $("<div class='correct'>Correct image!</div>").css("font-family","Gill Sans")
         }
         else{
             image_feedback = $("<div class='incorrect'>Incorrect image!</div>").css("font-family", "Gill Sans")
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
     $('.next_button').click(function(){
         $(".next_feedback").empty()
-        next_feedback = $("<div class='incorrect'>Please select image and check!</div>")
+        next_feedback = $("<div class='incorrect'>Please select image and check!</div>").css("font-family","Gill Sans")
         $('.next_feedback').append(next_feedback)
     })
 

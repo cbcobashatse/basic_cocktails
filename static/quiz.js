@@ -14,6 +14,7 @@ function create_link(cocktail) {
     let cardBody = $('<div class="card-body"> </div>')
     let cardTitle = $('<div class="quiz_card_title card-title">' + title + "</div>")
     let cardText = $('<p class="card-text">Test your knowledge on how to make a ' + title + ' cocktail</p>')
+    let cardImg = "<img class='card-img-top' src='"+curCocktail["quiz_home_image"]+"'"+" alt='"+curCocktail["quiz_home_alt_text"]+"'>"
     $(cardBody).append(cardTitle)
     $(cardBody).append(cardText)
 
@@ -29,6 +30,7 @@ function create_link(cocktail) {
 
     
     //NEW 
+    $(cardContainer.append(cardImg))
     $(cardContainer).append(cardBody)
     $(cardContainer).append(button)
     $(col).append(cardContainer)
