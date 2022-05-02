@@ -28,9 +28,10 @@ body{
 }
 
 .task{
-    background-color: lightgrey;
     height: 30px;
+    font-size: 20px;
     text-align: center;
+    font-family: Gill Sans;
 }
 
 .hint{
@@ -154,8 +155,8 @@ body{
 }
 
 .other_quiz_button{
-    background-color: #a9a9a9;
     color: white;
+    background-color: #a9a9a9;
     border-radius: 4px;
 }
 
@@ -185,7 +186,6 @@ body{
     background-color: #dcdcdc;
 }
 
-<<<<<<< HEAD
 button{
     font-family: Gill Sans;
 }
@@ -210,9 +210,6 @@ button{
     background-color: #5EBEC4;
 }
 
-.task{
-    font-family: Gill Sans;
-}
 
 .choices{
     font-family: Gill Sans;
@@ -220,12 +217,9 @@ button{
 
 .score{
     font-family: Gill Sans;
-=======
-.feedback{
-    margin-top: 20px;
 }
 
-.results{
-    text-align: center;
->>>>>>> 61f007b279f08a07d601bac4ea3435922a15456c
+#user_answers{
+    background-color: #dcdcdc;   
+    border-radius: 3px;
 }

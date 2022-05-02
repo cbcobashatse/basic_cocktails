@@ -176,8 +176,9 @@ function fill_in_answers(user_answers, question){
         console.log("doing it")
         $("#feedback_div").empty()
         let results = $("<div>Correct answers in Green, Incorrect answers in Red!</div>")
+        $(results).css("font-family", "Gill Sans")
         $("#feedback_div").append(results)
-        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold")
+        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
         answers_feedback(user_answers, question)
 
         //replacing the check button with the next button
@@ -249,7 +250,7 @@ $(document).ready(function(){
             $("#feedback_div").empty()
             let results = $("<div>Correct answers in Green, Incorrect answers in Red!</div>")
             $("#feedback_div").append(results)
-            $("#score").html(score + "/" + question["max_score"]).css("font-weight", "bold")
+            $("#score").html(score + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
             answers_feedback(user_answers, question)
             console.log(user_answers)
 
