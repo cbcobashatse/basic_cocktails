@@ -202,7 +202,7 @@ quiz_questions = {
         "alt_text1": "Sex on the Beach cocktail",
         "wrong_image": "https://breadboozebacon.com/wp-content/uploads/2020/12/Cosmopolitan-Cocktail-SQUARE-500x500.jpg",
         "alt_text2": "Tequila Sunrise cocktail",
-        "max_score": "8",
+        "max_score": "9",
         "next_question": "8"
     },    
 
@@ -214,7 +214,7 @@ quiz_questions = {
         "choices": ["Vodka", "Tequila", "Triple Sec", "Orange Juice", "Grenadine", "Citron Vodka", "Lime Juice", "Cranberry Juice", "Lime Garnish", "Cherry Garnish", "Simple Syrup", "Peach Schnapps"],
         "correct": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-191217-sex-on-the-beach-109-landscape-pf-1-1577742797.jpg?crop=0.668xw:1.00xh;0.196xw,0&resize=480:*",
         "alt_text": "Sex on the Beach cocktail",
-        "max_score": "8",
+        "max_score": "9",
         "next_question": "9"
     },
 

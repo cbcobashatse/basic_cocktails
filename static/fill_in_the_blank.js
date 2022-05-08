@@ -52,7 +52,6 @@ function make_quiz(){
         input_id = input_id + 1
     })
 
-    $(".score").html("_ /" + question["max_score"])
 
     $(".check_button").click(function(){
         check_answers()
@@ -183,7 +182,7 @@ function check_answers(){
 
         new_score = score + parseInt(user_answers['score'])
 
-        $(".score").html(new_score + "/" + question["max_score"]).css("font-weight", "bold")
+        $(".score").html("Overall score: " + new_score + "/" + question["max_score"]).css("font-weight", "bold")
 
         $(".check_button").off('click')
     }
@@ -209,7 +208,7 @@ function fill_in_answers(user_answers, question){
 
             $(this).attr("disabled", "disabled")
 
-            $(".score").html(user_answers["score"] + "/" + question["max_score"]).css("font-weight", "bold")
+            $(".score").html("Overall score: " + user_answers["score"] + "/" + question["max_score"]).css("font-weight", "bold")
 
             $(".check_button").off('click')
 

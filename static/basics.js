@@ -14,7 +14,7 @@ function  add_a_definition1(item){
     let row3 = $('<div id = "r3" class="row"></div>')
 
     $(row1).append(title)
-    $(row1).append('<br><button id="flip" type="button" value="Flip" onclick="flash(r2, r3)">Flip</button>')
+    $(row1).append('<br><button id="flip" type="button" value="Flip" onclick="flash(r2, r3)">Flip</button>').css("font-family", "Gill Sans")
     $(row2).append(content)
 
     $(row3).append(description)
@@ -46,7 +46,7 @@ function  add_a_definition2(item){
     let row3 = $('<div id = "r3_1" class="row"></div>')
 
     $(row1).append(title)
-    $(row1).append('<br><button id="flip" type="button" value="Flip" onclick="flash(r2_1, r3_1)">Flip</button>')
+    $(row1).append('<br><button id="flip" type="button" value="Flip" onclick="flash(r2_1, r3_1)">Flip</button>').css("font-family", "Gill Sans")
     $(row2).append(content)
 
     $(row3).append(description)
