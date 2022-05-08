@@ -82,7 +82,7 @@ function fill_in_answers(user_answers){
             image_feedback = $("<div class='incorrect'>Incorrect image selected!</div>").css("font-family", "Gill Sans")
         }
         $("#results").append(image_feedback)
-        $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
+        $("#score").html("Overall score: " + user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
 
         //replacing the check button with the next button
         $('#check_next_button').removeClass("check_button")
@@ -143,15 +143,15 @@ $(document).ready(function(){
         else{
             if (user_answers["image"] == 'correct'){
                 $("#results").empty()
-                image_feedback = $("<div class='correct'>Correct image selected!</div>")
+                image_feedback = $("<div class='correct'>Correct image selected!</div>").css("font-family", "Gill Sans")
             }
             else{
                 $("#results").empty()
-                image_feedback = $("<div class='incorrect'>Incorrect image selected!</div>")
+                image_feedback = $("<div class='incorrect'>Incorrect image selected!</div>").css("font-family", "Gill Sans")
             }
             $("#results").append(image_feedback)
             // $("#score").html("Overall score: ")
-            $("#score").html(user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
+            $("#score").html("Overall score: " + user_answers['score'] + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
             // console.log(user_answers)
 
             //replacing the check button with the next button

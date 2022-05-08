@@ -282,7 +282,7 @@ $(document).ready(function(){
             $("#feedback_div").empty()
             let results = $("<div>Correct answers in Green, Incorrect answers in Red!</div>")
             $("#feedback_div").append(results)
-            $("#score").html(score + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
+            $("#score").html("Overall score: " + score + "/" + question["max_score"]).css("font-weight", "bold").css("font-family", "Gill Sans")
             answers_feedback(user_answers, question)
             console.log(question["choices"])
             choices_feedback(user_answers, question)
